@@ -14,14 +14,14 @@ object Main:
 
   def main(args: Array[String]) =
     val (ipArg, flags) = args.partition(!_.startsWith("--"))
-    val ip = ipArg.headOption match
-      case Some(ip) => ip
+    val netId = ipArg.headOption match
+      case Some(netId) => netId
       case None     => defaultIP
 
-    Logger.info(s"Starting ScalaNmap on subnet: $ip.$startRange-$endRange")
+    Logger.info(s"Starting ScalaNmap on subnet: $netId.$startRange-$endRange")
 
     val scanning = for
-      hostsUp <- discoverHostsUp(ip)
+      hostsUp <- discoverHostsUp(netId)
       hostsUpPorts <- scanAllHosts(hostsUp)
     yield()
 
