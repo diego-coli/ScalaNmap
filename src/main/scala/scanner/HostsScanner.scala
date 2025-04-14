@@ -18,12 +18,12 @@ object HostsScanner:
             case _ if InetAddress.getByName(ip).isReachable(timeout) => up(ip)
             case _ => down(ip)
     }
-  
+
   def scan(netId: String, start: Int, end: Int): Future[Seq[Result]] =
     val range = (start to end).map(i => s"$netId.$i")
     val scans = range.map(ip => ping(ip))
     Future.sequence(scans)
-    
+
 
 
 
