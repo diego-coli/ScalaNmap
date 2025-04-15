@@ -15,7 +15,6 @@ object Main:
       Logger.info("No argument given.")
     else
       val (input, config): (String, Config) = getInputAndConfig(args)
-      
       input match
         case ipRegex(_*) => // single host scan
             HostScanner.pingHost(input).map:
@@ -25,14 +24,13 @@ object Main:
                 println("\nHost down")
 
         case cidrRegex(_*) => // subnet scan
-            val (netId, firstIP, lastIP) = Parser.parseCIDR(input)
-            println(s"Scanning subnet $netId.$firstIP-$lastIP...")
+              val (netId, firstIP, lastIP) = Parser.parseCIDR(input)
+              println(s"Scanning subnet $netId.$firstIP-$lastIP...")
 
-            HostScanner.pingRange(netId, firstIP, lastIP).map: results =>
-              val hostsUp = results.collect { case up(ip) => ip }
-              printResults(hostsUp)
-              if config.saveOnFile then saveResults(hostsUp)
-
+              HostScanner.pingRange(netId, firstIP, lastIP).map: results =>
+                val hostsUp = results.collect { case up(ip) => ip }
+                printResults(hostsUp)
+                if config.saveOnFile then saveResults(hostsUp)
         case _ =>
             Logger.info(s"IP Address format not valid, retry.")
 
