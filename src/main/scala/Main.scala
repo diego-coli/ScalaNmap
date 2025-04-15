@@ -27,7 +27,7 @@ object Main:
               val (netId, firstIP, lastIP) = Parser.parseCIDR(input)
               println(s"Scanning subnet $netId.$firstIP-$lastIP...")
 
-              HostScanner.pingRange(netId, firstIP, lastIP).map: results =>
+              HostScanner.pingRange(netId, firstIP, lastIP, config).map: results =>
                 val hostsUp = results.collect { case up(ip) => ip }
                 printResults(hostsUp)
                 if config.saveOnFile then saveResults(hostsUp)

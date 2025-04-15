@@ -1,31 +1,33 @@
 [debug] [zinc] IncrementalCompile -----------
 [debug] IncrementalCompile.incrementalCompile
-[debug] previous = Stamps for: 18 products, 5 sources, 1 libraries
-[debug] current source = Set(${BASE}/src/main/scala/scanner/ScalaNmap.scala, ${BASE}/src/main/scala/scanner/HostScanner.scala, ${BASE}/src/main/scala/utils/Parser.scala, ${BASE}/src/main/scala/Main.scala, ${BASE}/src/main/scala/utils/Logger.scala, ${BASE}/src/main/scala/scanner/PortsScanner.scala)
-[debug] > initialChanges = InitialChanges(Changes(added = Set(${BASE}/src/main/scala/scanner/ScalaNmap.scala), removed = Set(), changed = Set(${BASE}/src/main/scala/Main.scala), unmodified = ...),Set(${BASE}/target/scala-3.3.5/classes/Main$.class, ${BASE}/target/scala-3.3.5/classes/scanner/Result.class, ${BASE}/target/scala-3.3.5/classes/utils/Config.class, ${BASE}/target/scala-3.3.5/classes/Main.class, ${BASE}/target/scala-3.3.5/classes/Main$package.class, ${BASE}/target/scala-3.3.5/classes/utils/Parser.class, ${BASE}/target/scala-3.3.5/classes/scanner/down.class, ${BASE}/target/scala-3.3.5/classes/Main$$anon$1.class, ${BASE}/target/scala-3.3.5/classes/Main$package$.class, ${BASE}/target/scala-3.3.5/classes/scanner/HostScanner.class, ${BASE}/target/scala-3.3.5/classes/scanner/up.class, ${BASE}/target/scala-3.3.5/classes/utils/Logger.class),Set(),API Changes: Set())
+[debug] previous = Stamps for: 23 products, 6 sources, 1 libraries
+[debug] current source = Set(${BASE}/src/main/scala/scanner/HostScanner.scala, ${BASE}/src/main/scala/utils/Parser.scala, ${BASE}/src/main/scala/Main.scala, ${BASE}/src/main/scala/utils/Logger.scala, ${BASE}/src/main/scala/scanner/PortsScanner.scala)
+[debug] > initialChanges = InitialChanges(Changes(added = Set(), removed = Set(${BASE}/src/main/scala/scanner/ScalaNmap.scala), changed = Set(${BASE}/src/main/scala/utils/Logger.scala, ${BASE}/src/main/scala/scanner/HostScanner.scala, ${BASE}/src/main/scala/Main.scala), unmodified = ...),Set(${BASE}/target/scala-3.3.5/classes/Main$.class, ${BASE}/target/scala-3.3.5/classes/scanner/ScalaNmap$package$.class, ${BASE}/target/scala-3.3.5/classes/scanner/Result.class, ${BASE}/target/scala-3.3.5/classes/scanner/ScalaNmap$$anon$1.class, ${BASE}/target/scala-3.3.5/classes/utils/Config.class, ${BASE}/target/scala-3.3.5/classes/Main.class, ${BASE}/target/scala-3.3.5/classes/scanner/ScalaNmap.class, ${BASE}/target/scala-3.3.5/classes/Main$package.class, ${BASE}/target/scala-3.3.5/classes/utils/Parser.class, ${BASE}/target/scala-3.3.5/classes/scanner/down.class, ${BASE}/target/scala-3.3.5/classes/scanner/up$.class, ${BASE}/target/scala-3.3.5/classes/Main$$anon$1.class, ${BASE}/target/scala-3.3.5/classes/scanner/HostScanner$.class, ${BASE}/target/scala-3.3.5/classes/scanner/ScalaNmap$.class, ${BASE}/target/scala-3.3.5/classes/Main$package$.class, ${BASE}/target/scala-3.3.5/classes/scanner/HostScanner.class, ${BASE}/target/scala-3.3.5/classes/scanner/up.class, ${BASE}/target/scala-3.3.5/classes/scanner/ScalaNmap$package.class, ${BASE}/target/scala-3.3.5/classes/utils/Logger.class, ${BASE}/target/scala-3.3.5/classes/scanner/down$.class),Set(),API Changes: Set())
 [debug] 
 [debug] Initial source changes:
-[debug] 	removed: Set()
-[debug] 	added: Set(${BASE}/src/main/scala/scanner/ScalaNmap.scala)
-[debug] 	modified: Set(${BASE}/src/main/scala/Main.scala)
-[debug] Invalidated products: Set(${BASE}/target/scala-3.3.5/classes/Main$.class, ${BASE}/target/scala-3.3.5/classes/scanner/Result.class, ${BASE}/target/scala-3.3.5/classes/utils/Config.class, ${BASE}/target/scala-3.3.5/classes/Main.class, ${BASE}/target/scala-3.3.5/classes/Main$package.class, ${BASE}/target/scala-3.3.5/classes/utils/Parser.class, ${BASE}/target/scala-3.3.5/classes/scanner/down.class, ${BASE}/target/scala-3.3.5/classes/Main$$anon$1.class, ${BASE}/target/scala-3.3.5/classes/Main$package$.class, ${BASE}/target/scala-3.3.5/classes/scanner/HostScanner.class, ${BASE}/target/scala-3.3.5/classes/scanner/up.class, ${BASE}/target/scala-3.3.5/classes/utils/Logger.class)
+[debug] 	removed: Set(${BASE}/src/main/scala/scanner/ScalaNmap.scala)
+[debug] 	added: Set()
+[debug] 	modified: Set(${BASE}/src/main/scala/utils/Logger.scala, ${BASE}/src/main/scala/scanner/HostScanner.scala, ${BASE}/src/main/scala/Main.scala)
+[debug] Invalidated products: Set(${BASE}/target/scala-3.3.5/classes/Main$.class, ${BASE}/target/scala-3.3.5/classes/scanner/ScalaNmap$package$.class, ${BASE}/target/scala-3.3.5/classes/scanner/Result.class, ${BASE}/target/scala-3.3.5/classes/scanner/ScalaNmap$$anon$1.class, ${BASE}/target/scala-3.3.5/classes/utils/Config.class, ${BASE}/target/scala-3.3.5/classes/Main.class, ${BASE}/target/scala-3.3.5/classes/scanner/ScalaNmap.class, ${BASE}/target/scala-3.3.5/classes/Main$package.class, ${BASE}/target/scala-3.3.5/classes/utils/Parser.class, ${BASE}/target/scala-3.3.5/classes/scanner/down.class, ${BASE}/target/scala-3.3.5/classes/scanner/up$.class, ${BASE}/target/scala-3.3.5/classes/Main$$anon$1.class, ${BASE}/target/scala-3.3.5/classes/scanner/HostScanner$.class, ${BASE}/target/scala-3.3.5/classes/scanner/ScalaNmap$.class, ${BASE}/target/scala-3.3.5/classes/Main$package$.class, ${BASE}/target/scala-3.3.5/classes/scanner/HostScanner.class, ${BASE}/target/scala-3.3.5/classes/scanner/up.class, ${BASE}/target/scala-3.3.5/classes/scanner/ScalaNmap$package.class, ${BASE}/target/scala-3.3.5/classes/utils/Logger.class, ${BASE}/target/scala-3.3.5/classes/scanner/down$.class)
 [debug] External API changes: API Changes: Set()
 [debug] Modified binary dependencies: Set()
-[debug] Initial directly invalidated classes: Set(Main$package, Main)
+[debug] Initial directly invalidated classes: Set(scanner.ScalaNmap, scanner.ScalaNmap$package, Main$package, scanner.Result, utils.Logger, scanner.up, scanner.down, Main, scanner.HostScanner)
 [debug] Sources indirectly invalidated by:
-[debug] 	product: Set(${BASE}/src/main/scala/scanner/HostScanner.scala, ${BASE}/src/main/scala/utils/Parser.scala, ${BASE}/src/main/scala/Main.scala, ${BASE}/src/main/scala/utils/Logger.scala)
+[debug] 	product: Set(${BASE}/src/main/scala/scanner/ScalaNmap.scala, ${BASE}/src/main/scala/scanner/HostScanner.scala, ${BASE}/src/main/scala/utils/Parser.scala, ${BASE}/src/main/scala/Main.scala, ${BASE}/src/main/scala/utils/Logger.scala)
 [debug] 	binary dep: Set()
 [debug] 	external source: Set()
-[debug] All initially invalidated classes: Set(Main$package, Main)
+[debug] All initially invalidated classes: Set(scanner.ScalaNmap, scanner.ScalaNmap$package, Main$package, scanner.Result, utils.Logger, scanner.up, scanner.down, Main, scanner.HostScanner)
 [debug] All initially invalidated sources:Set(${BASE}/src/main/scala/scanner/ScalaNmap.scala, ${BASE}/src/main/scala/scanner/HostScanner.scala, ${BASE}/src/main/scala/utils/Parser.scala, ${BASE}/src/main/scala/Main.scala, ${BASE}/src/main/scala/utils/Logger.scala)
-[debug] Initial set of included nodes: Main$package, Main
+[debug] Initial set of included nodes: scanner.ScalaNmap, scanner.ScalaNmap$package, Main$package, scanner.Result, utils.Logger, scanner.up, scanner.down, Main, scanner.HostScanner
+[debug] Including scanner.up by scanner.Result
+[debug] Including scanner.down by scanner.Result
 [debug] Recompiling all sources: number of invalidated sources > 50.0 percent of all sources
 [debug] compilation cycle 1
-[info] compiling 6 Scala sources to C:\Users\diego\OneDrive\Desktop\MagistraleUniBo\PROGRAM. SVILUPPO (Viroli)\Lab\ScalaNmap\target\scala-3.3.5\classes ...
+[info] compiling 5 Scala sources to C:\Users\diego\OneDrive\Desktop\MagistraleUniBo\PROGRAM. SVILUPPO (Viroli)\Lab\ScalaNmap\target\scala-3.3.5\classes ...
 [debug] Returning already retrieved and compiled bridge: C:\Users\diego\AppData\Local\Coursier\Cache\v1\https\repo1.maven.org\maven2\org\scala-lang\scala3-sbt-bridge\3.3.5\scala3-sbt-bridge-3.3.5.jar.
-[debug] [zinc] Running cached compiler 1c13d43f for Scala Compiler version 3.3.5
+[debug] [zinc] Running cached compiler 5bec3d57 for Scala Compiler version 3.3.5
 [debug] [zinc] The Scala compiler is invoked with:
 [debug] 	-classpath
 [debug] 	C:\Users\diego\OneDrive\Desktop\MagistraleUniBo\PROGRAM. SVILUPPO (Viroli)\Lab\ScalaNmap\target\scala-3.3.5\classes;C:\Users\diego\AppData\Local\Coursier\Cache\v1\https\repo1.maven.org\maven2\org\scala-lang\scala3-library_3\3.3.5\scala3-library_3-3.3.5.jar;C:\Users\diego\AppData\Local\Coursier\Cache\v1\https\repo1.maven.org\maven2\org\scala-lang\scala-library\2.13.15\scala-library-2.13.15.jar
-[debug] Scala compilation took 6.1980173 s
+[debug] Scala compilation took 5.863607 s
 [info] done compiling
