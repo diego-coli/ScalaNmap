@@ -1,8 +1,5 @@
-import utils.Logger
-import utils.Parser
-import utils.Config
+import utils.*
 import scanner.*
-
 import scala.concurrent.Future
 import scala.util.matching.Regex
 import scala.concurrent.ExecutionContext.Implicits.global
