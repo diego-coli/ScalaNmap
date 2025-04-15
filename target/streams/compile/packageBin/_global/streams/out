@@ -1,11 +1,9 @@
 [debug] Packaging C:\Users\diego\OneDrive\Desktop\MagistraleUniBo\PROGRAM. SVILUPPO (Viroli)\Lab\ScalaNmap\target\scala-3.3.5\scalanmap_3-0.1.0-SNAPSHOT.jar ...
 [debug] Input file mappings:
+[debug] 	Main$$anon$1.class
+[debug] 	  C:\Users\diego\OneDrive\Desktop\MagistraleUniBo\PROGRAM. SVILUPPO (Viroli)\Lab\ScalaNmap\target\scala-3.3.5\classes\Main$$anon$1.class
 [debug] 	Main$.class
 [debug] 	  C:\Users\diego\OneDrive\Desktop\MagistraleUniBo\PROGRAM. SVILUPPO (Viroli)\Lab\ScalaNmap\target\scala-3.3.5\classes\Main$.class
-[debug] 	Main$defaultConfig$.class
-[debug] 	  C:\Users\diego\OneDrive\Desktop\MagistraleUniBo\PROGRAM. SVILUPPO (Viroli)\Lab\ScalaNmap\target\scala-3.3.5\classes\Main$defaultConfig$.class
-[debug] 	Main$defaultConfig.class
-[debug] 	  C:\Users\diego\OneDrive\Desktop\MagistraleUniBo\PROGRAM. SVILUPPO (Viroli)\Lab\ScalaNmap\target\scala-3.3.5\classes\Main$defaultConfig.class
 [debug] 	Main$package$.class
 [debug] 	  C:\Users\diego\OneDrive\Desktop\MagistraleUniBo\PROGRAM. SVILUPPO (Viroli)\Lab\ScalaNmap\target\scala-3.3.5\classes\Main$package$.class
 [debug] 	Main$package.class
@@ -42,10 +40,22 @@
 [debug] 	  C:\Users\diego\OneDrive\Desktop\MagistraleUniBo\PROGRAM. SVILUPPO (Viroli)\Lab\ScalaNmap\target\scala-3.3.5\classes\scanner\up.tasty
 [debug] 	utils
 [debug] 	  C:\Users\diego\OneDrive\Desktop\MagistraleUniBo\PROGRAM. SVILUPPO (Viroli)\Lab\ScalaNmap\target\scala-3.3.5\classes\utils
+[debug] 	utils\Config$.class
+[debug] 	  C:\Users\diego\OneDrive\Desktop\MagistraleUniBo\PROGRAM. SVILUPPO (Viroli)\Lab\ScalaNmap\target\scala-3.3.5\classes\utils\Config$.class
+[debug] 	utils\Config.class
+[debug] 	  C:\Users\diego\OneDrive\Desktop\MagistraleUniBo\PROGRAM. SVILUPPO (Viroli)\Lab\ScalaNmap\target\scala-3.3.5\classes\utils\Config.class
+[debug] 	utils\Config.tasty
+[debug] 	  C:\Users\diego\OneDrive\Desktop\MagistraleUniBo\PROGRAM. SVILUPPO (Viroli)\Lab\ScalaNmap\target\scala-3.3.5\classes\utils\Config.tasty
 [debug] 	utils\Logger$.class
 [debug] 	  C:\Users\diego\OneDrive\Desktop\MagistraleUniBo\PROGRAM. SVILUPPO (Viroli)\Lab\ScalaNmap\target\scala-3.3.5\classes\utils\Logger$.class
 [debug] 	utils\Logger.class
 [debug] 	  C:\Users\diego\OneDrive\Desktop\MagistraleUniBo\PROGRAM. SVILUPPO (Viroli)\Lab\ScalaNmap\target\scala-3.3.5\classes\utils\Logger.class
 [debug] 	utils\Logger.tasty
 [debug] 	  C:\Users\diego\OneDrive\Desktop\MagistraleUniBo\PROGRAM. SVILUPPO (Viroli)\Lab\ScalaNmap\target\scala-3.3.5\classes\utils\Logger.tasty
+[debug] 	utils\Parser$.class
+[debug] 	  C:\Users\diego\OneDrive\Desktop\MagistraleUniBo\PROGRAM. SVILUPPO (Viroli)\Lab\ScalaNmap\target\scala-3.3.5\classes\utils\Parser$.class
+[debug] 	utils\Parser.class
+[debug] 	  C:\Users\diego\OneDrive\Desktop\MagistraleUniBo\PROGRAM. SVILUPPO (Viroli)\Lab\ScalaNmap\target\scala-3.3.5\classes\utils\Parser.class
+[debug] 	utils\Parser.tasty
+[debug] 	  C:\Users\diego\OneDrive\Desktop\MagistraleUniBo\PROGRAM. SVILUPPO (Viroli)\Lab\ScalaNmap\target\scala-3.3.5\classes\utils\Parser.tasty
 [debug] Done packaging.
