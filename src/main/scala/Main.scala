@@ -3,6 +3,7 @@ import scanner.*
 
 import scala.concurrent.Future
 import scala.util.matching.Regex
+import scala.concurrent.ExecutionContext.Implicits.global
 
 object Main:
 
@@ -20,13 +21,20 @@ object Main:
       val input = args(0)
       input match
         case ipRegex(_*) =>
-          val (netId: String, last: Int) = parseIp(input)
-          HostsScanner.scan(netId = netId, start = last, end = last)
+          // operazione effettuata su [Result] di Future è disponibile
+          HostsScanner.ping(input).map {
+            case up(ip) => println("\nHost attivo")
+            case down(ip) => println("\nHost down")
+          }
+
+                            /*val (netId: String, last: Int) = parseIp(input)
+                            HostsScanner.scan(netId = netId, start = last, end = last)
+                             */
         case cidrRegex(_*) =>
-          val (netId, start, end) = parseCIDR(input)
-          HostsScanner.scan(netId, start, end)
+                            val (netId, start, end) = parseCIDR(input)
+                            HostsScanner.scan(netId, start, end)
         case _ =>
-          Logger.info(s"IP Address format not valid, retry.")
+                            Logger.info(s"IP Address format not valid, retry.")
 
 
 private def discoverHostsUp(ip: String): Future[Seq[String]] = ???

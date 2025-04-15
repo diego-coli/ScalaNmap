@@ -1,0 +1,8 @@
+[debug] > Exec(run 192.168.56.1, None, None)
+[debug] Evaluating tasks: Compile / run
+[debug] Running task... Cancel: Signal, check cycles: false, forcegc: true
+[info] compiling 4 Scala sources to C:\Users\diego\OneDrive\Desktop\MagistraleUniBo\PROGRAM. SVILUPPO (Viroli)\Lab\ScalaNmap\target\scala-3.3.5\classes ...
+[info] done compiling
+[debug] Forcing garbage collection...
+[success] Total time: 1 s, completed 14 apr 2025, 15:42:03
+[debug] > Exec(idea-shell, None, None)
