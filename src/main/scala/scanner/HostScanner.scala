@@ -1,6 +1,5 @@
 package scanner
 import utils.Config
-
 import java.net.InetAddress
 import scala.concurrent.Future
 import scala.concurrent.ExecutionContext.Implicits.global
@@ -24,20 +23,8 @@ object HostScanner:
     val range = (start to end).map(i => s"$netId.$i")
     val futures = range.map: ip =>
       pingHost(ip).map: result =>
-        if config.verboseMode then result match
+        if (config.verboseMode) result match
           case up(ip)   => println(s"[VERBOSE] Host UP: $ip")
           case down(ip) => println(s"[VERBOSE] Host DOWN: $ip")
         result
     Future.sequence(futures)
-
-
-
-
-
-
-
-
-
-
-
-
