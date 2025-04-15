@@ -1,9 +1,10 @@
 import utils.*
 import scanner.*
-import scala.concurrent.Future
 import scala.util.matching.Regex
 import scala.concurrent.ExecutionContext.Implicits.global
 import java.nio.file.{Files, Paths}
+
+
 
 object Main:
 
@@ -14,35 +15,42 @@ object Main:
     if args.isEmpty then
       Logger.info("No argument given.")
     else
-      val (ipArgs, flags) = args.partition(arg => !arg.startsWith("-"))
-      val input = ipArgs.head
-      val config: Config = Parser.parseFlags(flags)
+      val (input, config): (String, Config) = getInputAndConfig(args)
 
       input match
-        case ipRegex(_*) =>
-          HostsScanner.pingHost(input).map:
-            case up(ip) =>
-              println("\nHost up")
-            case down(ip) =>
-              println("\nHost down")
+        case ipRegex(_*) => // single host scan
+            HostScanner.pingHost(input).map:
+              case up(ip) =>
+                println("\nHost up")
+              case down(ip) =>
+                println("\nHost down")
 
-        case cidrRegex(_*) =>
-          val (netId, start, end) = Parser.parseCIDR(input)
-          println(s"Scanning subnet $netId.$start-$end...")
+        case cidrRegex(_*) => // subnet scan
+            val (netId, firstIP, lastIP) = Parser.parseCIDR(input)
+            println(s"Scanning subnet $netId.$firstIP-$lastIP...")
 
-          HostsScanner.pingRange(netId, start, end).map: results =>
-            val hostsUp = results.collect { case up(ip) => ip }
-
-            if hostsUp.nonEmpty then
-              println("\nActive hosts:")
-              hostsUp.foreach(ip => println(s" - $ip"))
-
-              if config.saveOnFile then
-                val outputPath = java.nio.file.Paths.get("scanned_hosts.txt")
-                java.nio.file.Files.write(outputPath, hostsUp.mkString("\n").getBytes)
-                println(s"\nActive hosts saved in: ${outputPath.toAbsolutePath}")
-            else
-              println("\nNo active hosts found.")
+            HostScanner.pingRange(netId, firstIP, lastIP).map: results =>
+              val hostsUp = results.collect { case up(ip) => ip }
+              printResults(hostsUp)
+              if config.saveOnFile then saveResults(hostsUp)
 
         case _ =>
-          Logger.info(s"IP Address format not valid, retry.")
+            Logger.info(s"IP Address format not valid, retry.")
+
+def getInputAndConfig(args: Array[String]): (String, Config) =
+  val (ipArgs, flags) = args.partition(arg => !arg.startsWith("-"))
+  val input = ipArgs.head
+  val config = Parser.parseFlags(flags)
+  (input, config)
+
+def saveResults(hostsUp: Seq[String]) =
+  val outputPath = java.nio.file.Paths.get("scanned_hosts.txt")
+  java.nio.file.Files.write(outputPath, hostsUp.mkString("\n").getBytes)
+  println(s"\nActive hosts saved in: ${outputPath.toAbsolutePath}")
+
+def printResults(hostsUp: Seq[String]) =
+  if hostsUp.nonEmpty then
+    println("\nActive hosts:")
+    hostsUp.foreach(ip => println(s" - $ip"))
+  else
+    println("\nNo active hosts found.")

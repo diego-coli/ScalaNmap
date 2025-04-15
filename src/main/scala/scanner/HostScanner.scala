@@ -9,7 +9,7 @@ sealed trait Result:
 case class up(ip: String) extends Result
 case class down(ip: String) extends Result
 
-object HostsScanner:
+object HostScanner:
 
   def pingHost(ip: String): Future[Result] =
     val timeout = 500
