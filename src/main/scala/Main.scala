@@ -10,11 +10,6 @@ object Main:
   val ipRegex: Regex = """^((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$""".r
   val cidrRegex: Regex = """^((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)/([12]?[0-9]|3[0-2])$""".r
 
-//  case class Config(defaultPortsToScan: Seq[Int] = 1 to 655353,
-//                    showOpenPorts: Boolean = true,
-//                    saveOnFile: Boolean = false,
-//                    verboseMode: Boolean = false)
-
   def main(args: Array[String]): Unit =
     if args.isEmpty then
       Logger.info("No argument given.")
@@ -51,8 +46,3 @@ object Main:
 
         case _ =>
           Logger.info(s"IP Address format not valid, retry.")
-
-
-private def discoverHostsUp(ip: String): Future[Seq[String]] = ???
-
-private def scanAllHosts(hostsUp: Seq[String]) = ???
