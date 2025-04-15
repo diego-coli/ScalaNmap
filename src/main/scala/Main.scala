@@ -31,8 +31,9 @@ object Main:
                 val hostsUp = results.collect { case up(ip) => ip }
                 printResults(hostsUp)
                 if config.saveOnFile then saveResults(hostsUp)
+        
         case _ =>
-            Logger.info(s"IP Address format not valid, retry.")
+              Logger.info(s"IP Address format not valid, retry.")
 
 def getInputAndConfig(args: Array[String]): (String, Config) =
   val (ipArgs, flags) = args.partition(arg => !arg.startsWith("-"))
