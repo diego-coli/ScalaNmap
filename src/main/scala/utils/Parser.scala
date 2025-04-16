@@ -11,11 +11,11 @@ case class Config(
 
 object Parser:
 
-  def parseIp(input: String): (String, Int) =
-    val octets = input.split("\\.")
-    val netId = octets.take(3).mkString(".")
-    val last = octets(3).toInt
-    (netId, last)
+//  def parseIp(input: String): (String, Int) =
+//    val octets = input.split("\\.")
+//    val netId = octets.take(3).mkString(".")
+//    val last = octets(3).toInt
+//    (netId, last)
 
   def parseCIDR(cidr: String): (String, Int, Int) =
     val Array(network, mask) = cidr.split("/")
