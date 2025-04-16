@@ -2,7 +2,7 @@
 <h3>The first network mapper fully designed in Scala</h3>
 
 <h2>COMPONENTS</h2>
-<h3>Main</h3>
+<h3>Main:</h3>
 <p>It takes two or more arguments. 
 <br>The first one should be a specific IP address or something like NetID/CIDR,
 to tell the scanner "Hey, I wanna discover which hosts are active in this subnet".
@@ -18,13 +18,25 @@ it will calculate the subnet range. Finally, through the <strong>Host Scanner</s
 <br>Also in this case, you'll receive a report about active hosts (if there're some), through the <strong>Report Manager</strong>.
 It's also able to print the report on a .txt file. 
 </p>
-<h3>Parser</h3>
+
+<h3>Host Scanner:</h3>
+<p></p>
+
+<h3>Ports Scanner:</h3>
+<p></p>
+
+<h3>Parser:</h3>
 <p>It's called by the <strong>Main</strong> and it has two very important functions. It:
 <br>- parses the input, to get the NetID and the subnet mask.
 Then, these two outputs are sent to the <strong>Host Scanner</strong> to procede with the scan; 
 <br>- parses the flags given as arguments, to check which options the user wants to turn on. 
 This options configuration is used by all files.</p>
-<h3>Host Scanner</h3>
+
+<h3>Report Manager:</h3>
 <p></p>
+
+<h3>Logger:</h3>
+<p></p>
+
 
 
