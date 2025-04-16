@@ -27,7 +27,7 @@ It's also able to print the report on a .txt file.
 
 <h3>Parser:</h3>
 <p>It's called by the <strong>Main</strong> and it has two very important functions. It:
-<br>- parses the input, to get the NetID and the subnet mask.
+<br>- parses the input, to get the IP address or the NetID and the subnet mask.
 Then, these two outputs are sent to the <strong>Host Scanner</strong> to procede with the scan; 
 <br>- parses the flags given as arguments, to check which options the user wants to turn on. 
 This options configuration is used by all files.</p>

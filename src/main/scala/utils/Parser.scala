@@ -11,11 +11,11 @@ case class Config(
 
 object Parser:
 
-//  def parseIp(input: String): (String, Int) =
-//    val octets = input.split("\\.")
-//    val netId = octets.take(3).mkString(".")
-//    val last = octets(3).toInt
-//    (netId, last)
+  def parseInputAndConfig(args: Array[String]): (Option[String], Config) =
+    val (ipArgs, flags) = args.partition(arg => !arg.startsWith("-"))
+    val inputOpt = ipArgs.headOption
+    val config = Parser.parseFlags(flags)
+    (inputOpt, config)
 
   def parseCIDR(cidr: String): (String, Int, Int) =
     val Array(network, mask) = cidr.split("/")
@@ -33,16 +33,3 @@ object Parser:
       saveOnFile = flags.contains("-S"),
       verboseMode = flags.contains("-V")
     )
-
-  def printHelp =
-    Logger.warn("-----------------------------------------------")
-    Logger.warn("(On sbt shell)")
-    Logger.warn("Usage:\trun <IP address> [-HOSV]")
-    Logger.warn("\trun <netID>/<CIDR> [-HOSV]")
-    Logger.warn("Options:")
-    Logger.warn("-H \tshow usage (this option won't start the scan)" +
-      "\n-O \tshow open ports" +
-      "\n-S \tsave scan results on file" +
-      "\n-V \tverbose mode")
-    Logger.warn("\n---------Default options are all false---------")
-    Logger.warn("-----------------------------------------------")

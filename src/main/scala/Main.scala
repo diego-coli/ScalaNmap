@@ -10,11 +10,12 @@ object Main:
   val cidrRegex: Regex = """^((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)/([12]?[0-9]|3[0-2])$""".r
 
   def main(args: Array[String]): Unit =
-    welcomeMessage()
+    Logger.welcomeMessage()
+
     if (args.isEmpty) Logger.warn("No argument provided")
     else
-      val (inputOpt, config) = getInputAndConfig(args)
-      if (config.showHelp) Parser.printHelp
+      val (inputOpt, config) = Parser.parseInputAndConfig(args)
+      if (config.showHelp) Logger.help
       else inputOpt match
           case Some(input) =>
             input match
@@ -35,16 +36,3 @@ object Main:
                   Logger.error(s"IP Address format not valid, retry.")
           case None =>
             Logger.error("No IP address or netID provided.")
-
-def getInputAndConfig(args: Array[String]): (Option[String], Config) =
-  val (ipArgs, flags) = args.partition(arg => !arg.startsWith("-"))
-  val inputOpt = ipArgs.headOption
-  val config = Parser.parseFlags(flags)
-  (inputOpt, config)
-
-def welcomeMessage() =
-  Logger.info("\n--------------------------------------------------------------------")
-  Logger.info("This is ScalaNmap, a network mapper fully designed in Scala and Java. " +
-          "\nType -h for help. Enjoy! " +
-          "\nDiego Coli', 2025")
-  Logger.info("--------------------------------------------------------------------")
