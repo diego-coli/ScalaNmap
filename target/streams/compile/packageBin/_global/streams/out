@@ -1,15 +1,7 @@
 [0m[[0m[0mdebug[0m] [0m[0mPackaging C:\Users\diego\OneDrive\Desktop\MagistraleUniBo\PROGRAM. SVILUPPO (Viroli)\Lab\ScalaNmap\target\scala-3.3.5\scalanmap_3-0.1.0-SNAPSHOT.jar ...[0m
 [0m[[0m[0mdebug[0m] [0m[0mInput file mappings:[0m
-[0m[[0m[0mdebug[0m] [0m[0m	Main$$anon$1.class[0m
-[0m[[0m[0mdebug[0m] [0m[0m	  C:\Users\diego\OneDrive\Desktop\MagistraleUniBo\PROGRAM. SVILUPPO (Viroli)\Lab\ScalaNmap\target\scala-3.3.5\classes\Main$$anon$1.class[0m
 [0m[[0m[0mdebug[0m] [0m[0m	Main$.class[0m
 [0m[[0m[0mdebug[0m] [0m[0m	  C:\Users\diego\OneDrive\Desktop\MagistraleUniBo\PROGRAM. SVILUPPO (Viroli)\Lab\ScalaNmap\target\scala-3.3.5\classes\Main$.class[0m
-[0m[[0m[0mdebug[0m] [0m[0m	Main$package$.class[0m
-[0m[[0m[0mdebug[0m] [0m[0m	  C:\Users\diego\OneDrive\Desktop\MagistraleUniBo\PROGRAM. SVILUPPO (Viroli)\Lab\ScalaNmap\target\scala-3.3.5\classes\Main$package$.class[0m
-[0m[[0m[0mdebug[0m] [0m[0m	Main$package.class[0m
-[0m[[0m[0mdebug[0m] [0m[0m	  C:\Users\diego\OneDrive\Desktop\MagistraleUniBo\PROGRAM. SVILUPPO (Viroli)\Lab\ScalaNmap\target\scala-3.3.5\classes\Main$package.class[0m
-[0m[[0m[0mdebug[0m] [0m[0m	Main$package.tasty[0m
-[0m[[0m[0mdebug[0m] [0m[0m	  C:\Users\diego\OneDrive\Desktop\MagistraleUniBo\PROGRAM. SVILUPPO (Viroli)\Lab\ScalaNmap\target\scala-3.3.5\classes\Main$package.tasty[0m
 [0m[[0m[0mdebug[0m] [0m[0m	Main.class[0m
 [0m[[0m[0mdebug[0m] [0m[0m	  C:\Users\diego\OneDrive\Desktop\MagistraleUniBo\PROGRAM. SVILUPPO (Viroli)\Lab\ScalaNmap\target\scala-3.3.5\classes\Main.class[0m
 [0m[[0m[0mdebug[0m] [0m[0m	Main.tasty[0m
@@ -22,6 +14,8 @@
 [0m[[0m[0mdebug[0m] [0m[0m	  C:\Users\diego\OneDrive\Desktop\MagistraleUniBo\PROGRAM. SVILUPPO (Viroli)\Lab\ScalaNmap\target\scala-3.3.5\classes\scanner\down.class[0m
 [0m[[0m[0mdebug[0m] [0m[0m	scanner\down.tasty[0m
 [0m[[0m[0mdebug[0m] [0m[0m	  C:\Users\diego\OneDrive\Desktop\MagistraleUniBo\PROGRAM. SVILUPPO (Viroli)\Lab\ScalaNmap\target\scala-3.3.5\classes\scanner\down.tasty[0m
+[0m[[0m[0mdebug[0m] [0m[0m	scanner\HostScanner$$anon$1.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  C:\Users\diego\OneDrive\Desktop\MagistraleUniBo\PROGRAM. SVILUPPO (Viroli)\Lab\ScalaNmap\target\scala-3.3.5\classes\scanner\HostScanner$$anon$1.class[0m
 [0m[[0m[0mdebug[0m] [0m[0m	scanner\HostScanner$.class[0m
 [0m[[0m[0mdebug[0m] [0m[0m	  C:\Users\diego\OneDrive\Desktop\MagistraleUniBo\PROGRAM. SVILUPPO (Viroli)\Lab\ScalaNmap\target\scala-3.3.5\classes\scanner\HostScanner$.class[0m
 [0m[[0m[0mdebug[0m] [0m[0m	scanner\HostScanner.class[0m

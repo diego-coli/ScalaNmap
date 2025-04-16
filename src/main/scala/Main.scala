@@ -17,22 +17,8 @@ object Main:
       val (inputOpt, config) = Parser.parseInputAndConfig(args)
       if (config.showHelp) Logger.help
       else inputOpt match
-          case Some(input) =>
-            input match
-              case ipRegex(_*) => // single host scan
-                  HostScanner.pingHost(input).map:
-                    case up(ip) =>
-                      Logger.success(s"\n$input: Host UP")
-                    case down(ip) =>
-                      Logger.warn(s"\n$input: Host DOWN")
-              case cidrRegex(_*) => // subnet scan
-                  val (netId, firstIP, lastIP) = Parser.parseCIDR(input)
-                  println(s"Scanning subnet $netId.$firstIP-$lastIP...")
-                  HostScanner.pingRange(netId, firstIP, lastIP, config).map: results =>
-                    val hostsUp = results.collect { case up(ip) => ip }
-                    ResultsManager.printResults(hostsUp)
-                    if (config.saveOnFile) ResultsManager.saveResults(hostsUp)
-              case _ =>
-                  Logger.error(s"IP Address format not valid, retry.")
-          case None =>
-            Logger.error("No IP address or netID provided.")
+          case Some(input) => input match
+                                case ipRegex(_*)   => HostScanner.scanHost(input, config)
+                                case cidrRegex(_*) => HostScanner.scanRange(input, config)
+                                case _             => Logger.error(s"IP Address format not valid, retry.")
+          case None        => Logger.error("No IP address or netID provided.")
