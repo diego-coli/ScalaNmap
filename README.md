@@ -13,8 +13,8 @@ to tell the scanner "Hey, I wanna discover which hosts are active in this subnet
 <br><strong>-V</strong> : to turn on the verbose mode
 <br>Through a <strong>Regex</strong>, this script automatically recognizes the format of the first argument.
 <br>If it's a <strong>single IP address</strong>, it calls the <strong>Host Scanner</strong> to ping that host and check if it's active or not.
-<br>If it's a <strong>combination of a NetID and a CIDR</strong>, it calls the <strong>Parser</strong> and 
-it will calculate the subnet range. Finally, through the <strong>Host Scanner</strong>, it will ping all hosts in that range.
+<br>If it's a <strong>combination of a NetID and a CIDR</strong>, it calls the <strong>Host Scanner</strong> again 
+and the subnet range will be calculated through the <strong>Parser</strong>. Finally, it will ping all hosts in that range.
 <br>Also in this case, you'll receive a report about active hosts (if there're some), through the <strong>Report Manager</strong>.
 It's also able to print the report on a .txt file. 
 </p>
