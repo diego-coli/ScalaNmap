@@ -1,6 +1,5 @@
 package scanner
 import utils.{Config, Logger, Parser, ResultsManager}
-
 import java.net.InetAddress
 import scala.concurrent.Future
 import scala.concurrent.ExecutionContext.Implicits.global
@@ -15,27 +14,22 @@ object HostScanner:
 
   def pingHost(ip: String): Future[Result] =
     val timeout = 500
+    val address = InetAddress.getByName(ip)
     Future:
-      InetAddress.getByName(ip) match
-            case _ if InetAddress.getByName(ip).isReachable(timeout) => up(ip)
-            case _ => down(ip)
+      if (address.isReachable(timeout)) up(ip) else down(ip)
 
   def pingRange(netId: String, first: Int, last: Int, config: Config): Future[Seq[Result]] =
     val range = (first to last).map(i => s"$netId.$i")
     val futures = range.map: ip =>
       pingHost(ip).map: result =>
-        if (config.verboseMode) result match
-          case up(ip)   => Logger.success(s"[VERBOSE] Host UP: $ip")
-          case down(ip) => Logger.warn(s"[VERBOSE] Host DOWN: $ip")
+        if (config.verboseMode) logResults(result, verbose = true)
         result
     Future.sequence(futures)
 
   def scanHost(ip: String, config: Config): Unit =
-    pingHost(ip).map:
-      case up(ip) =>
-        Logger.success(s"\n$ip: Host UP")
-        if (config.saveOnFile) ResultsManager.saveResults(Seq(ip))
-      case down(ip) => Logger.warn(s"\n$ip: Host DOWN")
+    pingHost(ip).map: result =>
+      logResults(result)
+      if (config.saveOnFile && result.isInstanceOf[up]) ResultsManager.saveResults(Seq(result.ip))
 
   def scanRange(cidrInput: String, config: Config): Unit =
     val (netId, firstIP, lastIP) = Parser.parseCIDR(cidrInput)
@@ -44,7 +38,10 @@ object HostScanner:
       val hostsUp = results.collect { case up(ip) => ip }
       if (!config.verboseMode) ResultsManager.printResults(hostsUp)
       if (config.saveOnFile) ResultsManager.saveResults(hostsUp)
-      val (totCount, hostsUpCount) = (results.size, hostsUp.size)
-      val msg = s"\nFinished: $hostsUpCount active hosts out of $totCount."
-      if (hostsUpCount > 0) Logger.success(msg)
-      else Logger.error(msg)
+      val msg = s"\nFinished: ${hostsUp.size} active hosts out of ${results.size}."
+      if (hostsUp.nonEmpty) Logger.success(msg) else Logger.error(msg)
+
+  // DRY
+  def logResults(result: Result, verbose: Boolean = false) = result match
+    case up(ip) => Logger.success(s"${if verbose then "[VERBOSE] " else ""}Host UP: $ip")
+    case down(ip) => Logger.warn(s"${if verbose then "[VERBOSE] " else ""}Host DOWN: $ip")
