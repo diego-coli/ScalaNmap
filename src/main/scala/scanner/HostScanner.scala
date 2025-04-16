@@ -20,8 +20,8 @@ object HostScanner:
             case _ if InetAddress.getByName(ip).isReachable(timeout) => up(ip)
             case _ => down(ip)
 
-  def pingRange(netId: String, start: Int, end: Int, config: Config): Future[Seq[Result]] =
-    val range = (start to end).map(i => s"$netId.$i")
+  def pingRange(netId: String, first: Int, last: Int, config: Config): Future[Seq[Result]] =
+    val range = (first to last).map(i => s"$netId.$i")
     val futures = range.map: ip =>
       pingHost(ip).map: result =>
         if (config.verboseMode) result match

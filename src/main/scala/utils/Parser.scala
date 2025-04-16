@@ -1,5 +1,4 @@
 package utils
-import scala.collection.immutable.Seq as end
 
 case class Config(
                    defaultPortsToScan: Seq[Int] = 1 to 65535,
@@ -22,9 +21,9 @@ object Parser:
     val maskLength = mask.toInt
     val netParts = network.split("\\.").map(_.toInt)
     val netId = netParts.take(3).mkString(".")
-    val start = 1
-    val end = if (maskLength == 24) 254 else 255
-    (netId, start, end)
+    val first = 1
+    val last = if (maskLength == 24) 254 else 255
+    (netId, first, last)
 
   def parseFlags(flags: Seq[String]): Config =
     Config(
