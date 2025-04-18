@@ -34,19 +34,27 @@ object HostScanner:
         case up(ip) =>
           PortsScanner.scanPorts(ip).map: openPorts =>
               ResultsManager.printPortStatus(ip, openPorts, config.showOpenPorts)
-              if (config.saveOnFile && result.isInstanceOf[up]) ResultsManager.saveResults(Seq(result.ip))
+              if (config.saveOnFile) ResultsManager.saveResults(Seq(ip -> openPorts))
+              // if (config.saveOnFile) ResultsManager.saveResults(Seq(result.ip))
         case _ => ()
 
   def scanRange(cidrInput: String, config: Config): Unit =
     val (netId, firstIP, lastIP) = Parser.parseCIDR(cidrInput)
     Logger.info(s"Scanning subnet $netId.$firstIP-$lastIP...")
-    pingRange(netId, firstIP, lastIP, config).map: results =>
+    pingRange(netId, firstIP, lastIP, config).flatMap: results =>
       val hostsUp = results.collect:
         case up(ip) => ip
       if (!config.verboseMode) ResultsManager.printActiveHosts(hostsUp)
-      if (config.saveOnFile) ResultsManager.saveResults(hostsUp)
-      val ports = hostsUp.map: ip =>
-        PortsScanner.scanPorts(ip).map: openPorts =>
-          ResultsManager.printPortStatus(ip, openPorts, config.showOpenPorts)
-      Future.sequence(ports)
-      ResultsManager.printActiveOutOfTotal(hostsUp.size, results.size)
+      if (config.showOpenPorts || config.saveOnFile)
+        val portScans: Seq[Future[(String, Seq[Int])]] = hostsUp.map: ip =>
+          PortsScanner.scanPorts(ip).map(openPorts =>
+            ResultsManager.printPortStatus(ip, openPorts, config.showOpenPorts)
+            (ip, openPorts)
+          )
+        Future.sequence(portScans).map: resultsWithPorts =>
+          if (config.saveOnFile)
+            ResultsManager.saveResults(resultsWithPorts, includePorts = config.showOpenPorts)
+          ResultsManager.printActiveOutOfTotal(hostsUp.size, results.size)
+      else
+        ResultsManager.printActiveOutOfTotal(hostsUp.size, results.size)
+        Future.unit

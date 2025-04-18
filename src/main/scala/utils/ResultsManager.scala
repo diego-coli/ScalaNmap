@@ -4,10 +4,14 @@ import scanner.*
 
 object ResultsManager:
 
-  def saveResults(hosts: Seq[String]): Unit =
+  def saveResults(results: Seq[(String, Seq[Int])], includePorts: Boolean = false): Unit =
+    val res = results.map:
+      case (ip, ports) =>
+        if (includePorts && ports.nonEmpty) s"Host: $ip | Open ports: ${ports.mkString(", ")}"
+        else ip
     val outputPath = java.nio.file.Paths.get("results.txt")
-    java.nio.file.Files.write(outputPath, hosts.mkString("\n").getBytes)
-    Logger.info(s"\nActive hosts saved in: ${outputPath.toAbsolutePath}")
+    java.nio.file.Files.write(outputPath, res.mkString("\n").getBytes)
+    Logger.info(s"\nActive hosts${if includePorts then " and open ports" else ""} saved in: ${outputPath.toAbsolutePath}")
 
   def printActiveHosts(hostsUp: Seq[String]): Unit =
     if (hostsUp.nonEmpty)
