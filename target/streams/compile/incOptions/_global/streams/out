@@ -7,6 +7,7 @@
 [0m[[0m[0mdebug[0m] [0m[0m	Logger$.class[0m
 [0m[[0m[0mdebug[0m] [0m[0m	Result.class[0m
 [0m[[0m[0mdebug[0m] [0m[0m	Config.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	PortsScanner.class[0m
 [0m[[0m[0mdebug[0m] [0m[0m	Main.class[0m
 [0m[[0m[0mdebug[0m] [0m[0m	ResultsManager.class[0m
 [0m[[0m[0mdebug[0m] [0m[0m	Config$.class[0m
@@ -17,6 +18,7 @@
 [0m[[0m[0mdebug[0m] [0m[0m	HostScanner.class[0m
 [0m[[0m[0mdebug[0m] [0m[0m	up.class[0m
 [0m[[0m[0mdebug[0m] [0m[0m	Logger.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	PortsScanner$.class[0m
 [0m[[0m[0mdebug[0m] [0m[0m	down$.class[0m
 [0m[[0m[0mdebug[0m] [0m[0m	Main$.tasty[0m
 [0m[[0m[0mdebug[0m] [0m[0m	HostScanner$$anon$1.tasty[0m
@@ -25,6 +27,7 @@
 [0m[[0m[0mdebug[0m] [0m[0m	Logger$.tasty[0m
 [0m[[0m[0mdebug[0m] [0m[0m	Result.tasty[0m
 [0m[[0m[0mdebug[0m] [0m[0m	Config.tasty[0m
+[0m[[0m[0mdebug[0m] [0m[0m	PortsScanner.tasty[0m
 [0m[[0m[0mdebug[0m] [0m[0m	Main.tasty[0m
 [0m[[0m[0mdebug[0m] [0m[0m	ResultsManager.tasty[0m
 [0m[[0m[0mdebug[0m] [0m[0m	Config$.tasty[0m
@@ -35,6 +38,7 @@
 [0m[[0m[0mdebug[0m] [0m[0m	HostScanner.tasty[0m
 [0m[[0m[0mdebug[0m] [0m[0m	up.tasty[0m
 [0m[[0m[0mdebug[0m] [0m[0m	Logger.tasty[0m
+[0m[[0m[0mdebug[0m] [0m[0m	PortsScanner$.tasty[0m
 [0m[[0m[0mdebug[0m] [0m[0m	down$.tasty[0m
 [0m[[0m[0mdebug[0m] [0m[0mWe backup class files:[0m
 [0m[[0m[0mdebug[0m] [0m[0m	Main$.class[0m
@@ -44,6 +48,7 @@
 [0m[[0m[0mdebug[0m] [0m[0m	Logger$.class[0m
 [0m[[0m[0mdebug[0m] [0m[0m	Result.class[0m
 [0m[[0m[0mdebug[0m] [0m[0m	Config.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	PortsScanner.class[0m
 [0m[[0m[0mdebug[0m] [0m[0m	Main.class[0m
 [0m[[0m[0mdebug[0m] [0m[0m	ResultsManager.class[0m
 [0m[[0m[0mdebug[0m] [0m[0m	Config$.class[0m
@@ -54,6 +59,7 @@
 [0m[[0m[0mdebug[0m] [0m[0m	HostScanner.class[0m
 [0m[[0m[0mdebug[0m] [0m[0m	up.class[0m
 [0m[[0m[0mdebug[0m] [0m[0m	Logger.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	PortsScanner$.class[0m
 [0m[[0m[0mdebug[0m] [0m[0m	down$.class[0m
 [0m[[0m[0mdebug[0m] [0m[0m	Main$.tasty[0m
 [0m[[0m[0mdebug[0m] [0m[0m	HostScanner$$anon$1.tasty[0m
@@ -62,6 +68,7 @@
 [0m[[0m[0mdebug[0m] [0m[0m	Logger$.tasty[0m
 [0m[[0m[0mdebug[0m] [0m[0m	Result.tasty[0m
 [0m[[0m[0mdebug[0m] [0m[0m	Config.tasty[0m
+[0m[[0m[0mdebug[0m] [0m[0m	PortsScanner.tasty[0m
 [0m[[0m[0mdebug[0m] [0m[0m	Main.tasty[0m
 [0m[[0m[0mdebug[0m] [0m[0m	ResultsManager.tasty[0m
 [0m[[0m[0mdebug[0m] [0m[0m	Config$.tasty[0m
@@ -72,6 +79,7 @@
 [0m[[0m[0mdebug[0m] [0m[0m	HostScanner.tasty[0m
 [0m[[0m[0mdebug[0m] [0m[0m	up.tasty[0m
 [0m[[0m[0mdebug[0m] [0m[0m	Logger.tasty[0m
+[0m[[0m[0mdebug[0m] [0m[0m	PortsScanner$.tasty[0m
 [0m[[0m[0mdebug[0m] [0m[0m	down$.tasty[0m
 [0m[[0m[0mdebug[0m] [0m[0mRegistering generated classes:[0m
 [0m[[0m[0mdebug[0m] [0m[0m	Main$.class[0m
@@ -81,6 +89,7 @@
 [0m[[0m[0mdebug[0m] [0m[0m	Logger$.class[0m
 [0m[[0m[0mdebug[0m] [0m[0m	Result.class[0m
 [0m[[0m[0mdebug[0m] [0m[0m	Config.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	PortsScanner.class[0m
 [0m[[0m[0mdebug[0m] [0m[0m	Main.class[0m
 [0m[[0m[0mdebug[0m] [0m[0m	ResultsManager.class[0m
 [0m[[0m[0mdebug[0m] [0m[0m	Config$.class[0m
@@ -91,6 +100,7 @@
 [0m[[0m[0mdebug[0m] [0m[0m	HostScanner.class[0m
 [0m[[0m[0mdebug[0m] [0m[0m	up.class[0m
 [0m[[0m[0mdebug[0m] [0m[0m	Logger.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	PortsScanner$.class[0m
 [0m[[0m[0mdebug[0m] [0m[0m	down$.class[0m
 [0m[[0m[0mdebug[0m] [0m[0m	Main$.tasty[0m
 [0m[[0m[0mdebug[0m] [0m[0m	HostScanner$$anon$1.tasty[0m
@@ -99,6 +109,7 @@
 [0m[[0m[0mdebug[0m] [0m[0m	Logger$.tasty[0m
 [0m[[0m[0mdebug[0m] [0m[0m	Result.tasty[0m
 [0m[[0m[0mdebug[0m] [0m[0m	Config.tasty[0m
+[0m[[0m[0mdebug[0m] [0m[0m	PortsScanner.tasty[0m
 [0m[[0m[0mdebug[0m] [0m[0m	Main.tasty[0m
 [0m[[0m[0mdebug[0m] [0m[0m	ResultsManager.tasty[0m
 [0m[[0m[0mdebug[0m] [0m[0m	Config$.tasty[0m
@@ -109,5 +120,6 @@
 [0m[[0m[0mdebug[0m] [0m[0m	HostScanner.tasty[0m
 [0m[[0m[0mdebug[0m] [0m[0m	up.tasty[0m
 [0m[[0m[0mdebug[0m] [0m[0m	Logger.tasty[0m
+[0m[[0m[0mdebug[0m] [0m[0m	PortsScanner$.tasty[0m
 [0m[[0m[0mdebug[0m] [0m[0m	down$.tasty[0m
 [0m[[0m[0mdebug[0m] [0m[0mRemoving the temporary directory used for backing up class files: C:\Users\diego\OneDrive\Desktop\MagistraleUniBo\PROGRAM. SVILUPPO (Viroli)\Lab\ScalaNmap\target\scala-3.3.5\classes.bak[0m

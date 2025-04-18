@@ -19,15 +19,16 @@ object ResultsManager:
   def printHostStutus(result: Result, verbose: Boolean = false): Unit =
     if (verbose)
       result match
-        case up(ip)   => Logger.success(s"${if verbose then "[VERBOSE] " else ""}Host UP: $ip")
-        case down(ip) => Logger.warn(s"${if verbose then "[VERBOSE] " else ""}Host DOWN: $ip")
+        case up(ip)   => Logger.success(s"Host UP: $ip")
+        case down(ip) => Logger.warn(s"Host DOWN: $ip")
 
-  def printPortStatus(ip: String, openPorts: Seq[Int], verbose: Boolean = false): Unit =
-    if (openPorts.isEmpty)
-      if (verbose) Logger.warn(s"No open ports on $ip.")
-    else
-      Logger.success(s"Open ports on $ip:")
-      openPorts.foreach(port => Logger.success(s"$port"))
+  def printPortStatus(ip: String, openPorts: Seq[Int], showOpenPorts: Boolean = false): Unit =
+    if (showOpenPorts)
+      if (openPorts.isEmpty) Logger.warn(s"No open ports found on $ip.")
+      else
+        Logger.success(s"Open ports on $ip:")
+        openPorts.foreach(port => Logger.success(s"$port"))
+    else if (!showOpenPorts && openPorts.nonEmpty) Logger.info("Open ports found! Re-run with -O to see them.")
 
   def printActiveOutOfTotal(active: Int, total: Int): Unit =
     val msg = s"\nFinished: $active active hosts out of $total."
