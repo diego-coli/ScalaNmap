@@ -35,7 +35,6 @@ object HostScanner:
           PortsScanner.scanPorts(ip).map: openPorts =>
               ResultsManager.printPortStatus(ip, openPorts, config.showOpenPorts)
               if (config.saveOnFile) ResultsManager.saveResults(Seq(ip -> openPorts))
-              // if (config.saveOnFile) ResultsManager.saveResults(Seq(result.ip))
         case _ => ()
 
   def scanRange(cidrInput: String, config: Config): Unit =
@@ -52,8 +51,7 @@ object HostScanner:
             (ip, openPorts)
           )
         Future.sequence(portScans).map: resultsWithPorts =>
-          if (config.saveOnFile)
-            ResultsManager.saveResults(resultsWithPorts, includePorts = config.showOpenPorts)
+          if (config.saveOnFile) ResultsManager.saveResults(resultsWithPorts, includePorts = config.showOpenPorts)
           ResultsManager.printActiveOutOfTotal(hostsUp.size, results.size)
       else
         ResultsManager.printActiveOutOfTotal(hostsUp.size, results.size)
