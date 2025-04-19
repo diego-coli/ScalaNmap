@@ -12,14 +12,14 @@ case class down(ip: String) extends Result
 
 object HostScanner:
 
-  def pingHost(ip: String): Future[Result] =
+  private def pingHost(ip: String): Future[Result] =
     val timeout = 500
     val address = InetAddress.getByName(ip)
     Future:
       if (address.isReachable(timeout)) up(ip)
       else down(ip)
 
-  def pingRange(netId: String, first: Int, last: Int, config: Config): Future[Seq[Result]] =
+  private def pingRange(netId: String, first: Int, last: Int, config: Config): Future[Seq[Result]] =
     val range = (first to last).map(i => s"$netId.$i")
     val futures = range.map: ip =>
       pingHost(ip).map: result =>
@@ -56,4 +56,4 @@ object HostScanner:
         ResultsManager.printActiveOutOfTotal(hostsUp.size, results.size)
         Future.unit
 
-    def extractActiveHosts(results: Seq[Result]): Seq[String] = results.collect { case up(ip) => ip }
+  private def extractActiveHosts(results: Seq[Result]): Seq[String] = results.collect { case up(ip) => ip }
