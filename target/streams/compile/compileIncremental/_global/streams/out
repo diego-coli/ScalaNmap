@@ -22,9 +22,9 @@
 [0m[[0m[0mdebug[0m] [0m[0mcompilation cycle 1[0m
 [0m[[0m[0minfo[0m] [0m[0mcompiling 6 Scala sources to C:\Users\diego\OneDrive\Desktop\MagistraleUniBo\PROGRAM. SVILUPPO (Viroli)\Lab\ScalaNmap\target\scala-3.3.5\classes ...[0m
 [0m[[0m[0mdebug[0m] [0m[0mReturning already retrieved and compiled bridge: C:\Users\diego\AppData\Local\Coursier\Cache\v1\https\repo1.maven.org\maven2\org\scala-lang\scala3-sbt-bridge\3.3.5\scala3-sbt-bridge-3.3.5.jar.[0m
-[0m[[0m[0mdebug[0m] [0m[0m[zinc] Running cached compiler 7cfa104b for Scala Compiler version 3.3.5[0m
+[0m[[0m[0mdebug[0m] [0m[0m[zinc] Running cached compiler 276b5a98 for Scala Compiler version 3.3.5[0m
 [0m[[0m[0mdebug[0m] [0m[0m[zinc] The Scala compiler is invoked with:[0m
 [0m[[0m[0mdebug[0m] [0m[0m	-classpath[0m
 [0m[[0m[0mdebug[0m] [0m[0m	C:\Users\diego\OneDrive\Desktop\MagistraleUniBo\PROGRAM. SVILUPPO (Viroli)\Lab\ScalaNmap\target\scala-3.3.5\classes;C:\Users\diego\AppData\Local\Coursier\Cache\v1\https\repo1.maven.org\maven2\org\scala-lang\scala3-library_3\3.3.5\scala3-library_3-3.3.5.jar;C:\Users\diego\AppData\Local\Coursier\Cache\v1\https\repo1.maven.org\maven2\org\scala-lang\scala-library\2.13.15\scala-library-2.13.15.jar[0m
-[0m[[0m[0mdebug[0m] [0m[0mScala compilation took 0.4901707 s[0m
+[0m[[0m[0mdebug[0m] [0m[0mScala compilation took 1.8878483 s[0m
 [0m[[0m[0mdebug[0m] [0m[0mdone compiling[0m

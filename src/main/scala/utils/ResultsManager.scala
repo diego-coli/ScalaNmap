@@ -8,7 +8,7 @@ object ResultsManager:
     val res = results.map:
       case (ip, ports) =>
         if (includePorts && ports.nonEmpty) s"Host: $ip | Open ports: ${ports.mkString(", ")}"
-        else ip
+        else s"Host: $ip"
     val outputPath = java.nio.file.Paths.get("results.txt")
     java.nio.file.Files.write(outputPath, res.mkString("\n").getBytes)
     Logger.info(s"\nActive hosts${if includePorts then " and open ports" else ""} saved in: ${outputPath.toAbsolutePath}")
