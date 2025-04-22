@@ -29,7 +29,8 @@ object Logger:
     warn("Options:")
     warn("-H \tshow usage (this option won't start the scan)" +
       "\n-O \tshow open ports" +
-      "\n-S \tsave scan results on file" +
+      "\n-F \tsave scan results on file" +
+      "\n-S \tshow services on open ports" +
       "\n-V \tverbose mode")
     warn("\n---------Default options are all false---------")
     warn("-----------------------------------------------")

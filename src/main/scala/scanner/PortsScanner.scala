@@ -10,7 +10,11 @@ object PortsScanner:
 
   val commonPorts: Seq[Int] = Seq(21, 22, 23, 25, 53, 80, 110, 139, 143, 443, 445, 3306, 3389, 5432, 6379, 8080)
 
-  def scanSinglePort(ip: String, port: Int): Future[Option[Int]] =
+  def scanPorts(ip: String, ports: Seq[Int] = commonPorts): Future[Seq[Int]] =
+    val portFutures = ports.map(scanSinglePort(ip, _))
+    Future.sequence(portFutures).map(_.flatten)
+
+  private def scanSinglePort(ip: String, port: Int): Future[Option[Int]] =
     Future {
       val socket = new Socket()
       val timeout = 500
@@ -20,7 +24,3 @@ object PortsScanner:
         port
       }.toOption // return Success value or default Failure value
     }
-
-  def scanPorts(ip: String, ports: Seq[Int] = commonPorts): Future[Seq[Int]] =
-    val portFutures = ports.map(scanSinglePort(ip, _))
-    Future.sequence(portFutures).map(_.flatten)

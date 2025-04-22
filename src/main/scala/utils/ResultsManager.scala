@@ -37,3 +37,7 @@ object ResultsManager:
   def printActiveOutOfTotal(active: Int, total: Int): Unit =
     val msg = s"\nFinished: $active active hosts out of $total."
     if (active > 0) Logger.success(msg) else Logger.error(msg)
+
+  private def printServiceInfo(ip: String, port: Int, showServices: Boolean = false): Unit =
+    if (showServices)
+      ServiceRecon.recognize(ip, port)

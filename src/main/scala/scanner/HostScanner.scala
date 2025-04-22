@@ -12,21 +12,6 @@ case class down(ip: String) extends Result
 
 object HostScanner:
 
-  private def pingHost(ip: String): Future[Result] =
-    val timeout = 500
-    val address = InetAddress.getByName(ip)
-    Future:
-      if (address.isReachable(timeout)) up(ip)
-      else down(ip)
-
-  private def pingRange(netId: String, first: Int, last: Int, config: Config): Future[Seq[Result]] =
-    val range = (first to last).map(i => s"$netId.$i")
-    val futures = range.map: ip =>
-      pingHost(ip).map: result =>
-        ResultsManager.printHostStutus(result, config.verboseMode)
-        result
-    Future.sequence(futures)
-
   def scanHost(ip: String, config: Config): Unit =
     pingHost(ip).map: result =>
       ResultsManager.printHostStutus(result, verbose = true)
@@ -55,5 +40,20 @@ object HostScanner:
       else
         ResultsManager.printActiveOutOfTotal(hostsUp.size, results.size)
         Future.unit
+
+  private def pingHost(ip: String): Future[Result] =
+    val timeout = 500
+    val address = InetAddress.getByName(ip)
+    Future:
+      if (address.isReachable(timeout)) up(ip)
+      else down(ip)
+
+  private def pingRange(netId: String, first: Int, last: Int, config: Config): Future[Seq[Result]] =
+    val range = (first to last).map(i => s"$netId.$i")
+    val futures = range.map: ip =>
+      pingHost(ip).map: result =>
+        ResultsManager.printHostStutus(result, config.verboseMode)
+        result
+    Future.sequence(futures)
 
   private def extractActiveHosts(results: Seq[Result]): Seq[String] = results.collect { case up(ip) => ip }

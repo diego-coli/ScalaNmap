@@ -5,6 +5,7 @@ case class Config(
                    showHelp: Boolean = false,
                    showOpenPorts: Boolean = true,
                    saveOnFile: Boolean = false,
+                   showServices: Boolean = false,
                    verboseMode: Boolean = false
                  )
 
@@ -29,6 +30,7 @@ object Parser:
     Config(
       showHelp = flags.contains("-H"),
       showOpenPorts = flags.contains("-O"),
-      saveOnFile = flags.contains("-S"),
+      saveOnFile = flags.contains("-F"),
+      showServices = flags.contains("-S"),
       verboseMode = flags.contains("-V")
     )
