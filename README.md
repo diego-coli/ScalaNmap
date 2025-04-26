@@ -1,6 +1,8 @@
 <h1>SCALA NMAP</h1>
 <h3>The first network mapper fully designed in Scala</h3>
 
+![img_5.png](img_5.png)
+
 <h2>COMPONENTS</h2>
 <h3>Main:</h3>
 <p>It takes two or more arguments. 
