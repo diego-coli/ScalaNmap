@@ -15,12 +15,11 @@ object PortsScanner:
     Future.sequence(portFutures).map(_.flatten)
 
   private def scanSinglePort(ip: String, port: Int): Future[Option[Int]] =
-    Future {
+    Future:
       val socket = new Socket()
       val timeout = 500
-      Try {
+      Try:
         socket.connect(new InetSocketAddress(ip, port), timeout)
         socket.close()
         port
-      }.toOption // return Success value or default Failure value
-    }
+      .toOption // return Success value or default Failure value

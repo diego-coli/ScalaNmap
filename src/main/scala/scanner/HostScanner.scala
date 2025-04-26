@@ -14,11 +14,11 @@ object HostScanner:
 
   def scanHost(ip: String, config: Config): Unit =
     pingHost(ip).map: result =>
-      ResultsManager.printHostStutus(result, verbose = true)
+      ResultsManager.printHosts(result, verbose = true)
       result match
         case up(ip) =>
           PortsScanner.scanPorts(ip).map: openPorts =>
-              ResultsManager.printPortStatus(ip, openPorts, config.showOpenPorts)
+              ResultsManager.printPorts(ip, openPorts, config.showOpenPorts, config.showServices)
               if (config.saveOnFile) ResultsManager.saveResults(Seq(ip -> openPorts))
         case _ => ()
 
@@ -31,11 +31,11 @@ object HostScanner:
       if (config.showOpenPorts || config.saveOnFile)
         val scannedPorts = hostsUp.map: ip =>
           PortsScanner.scanPorts(ip).map(openPorts =>
-            ResultsManager.printPortStatus(ip, openPorts, config.showOpenPorts)
+            ResultsManager.printPorts(ip, openPorts, config.showOpenPorts, config.showServices)
             (ip, openPorts)
           )
         Future.sequence(scannedPorts).map: hostsAndPorts =>
-          if (config.saveOnFile) ResultsManager.saveResults(hostsAndPorts, config.showOpenPorts)
+          if (config.saveOnFile) ResultsManager.saveResults(hostsAndPorts, config.showOpenPorts, config.showServices)
           ResultsManager.printActiveOutOfTotal(hostsUp.size, results.size)
       else
         ResultsManager.printActiveOutOfTotal(hostsUp.size, results.size)
@@ -52,7 +52,7 @@ object HostScanner:
     val range = (first to last).map(i => s"$netId.$i")
     val futures = range.map: ip =>
       pingHost(ip).map: result =>
-        ResultsManager.printHostStutus(result, config.verboseMode)
+        ResultsManager.printHosts(result, config.verboseMode)
         result
     Future.sequence(futures)
 

@@ -11,7 +11,7 @@ object ServiceRecon:
     grabBanner(ip, port).fold(service)(banner => s"$service ($banner)")
 
   private def grabBanner(ip: String, port: Int): Option[String] =
-    Try {
+    Try:
       val socket = new Socket()
       socket.connect(new InetSocketAddress(ip, port), 1000)
       socket.setSoTimeout(1000)
@@ -22,7 +22,7 @@ object ServiceRecon:
       val banner = input.readLine()
       socket.close()
       banner
-    }.toOption
+    .toOption
 
   private val knownServices = Map(
     21 -> "FTP",
