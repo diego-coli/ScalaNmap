@@ -42,7 +42,7 @@ This options configuration is used by all files.</p>
 <p>It's used by everyone else and it's useful to print infos and save them on a .txt file.</p>
 
 <h3>Logger:</h3>
-<p>It's a simple messages printer. It uses different colours for success, warning and error messages.</p>
+<p>It's a simple message printer. It uses different colours for success, warning and error messages.</p>
 
 
 
