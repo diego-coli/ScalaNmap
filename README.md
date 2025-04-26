@@ -1,7 +1,7 @@
 <h1>SCALA NMAP</h1>
 <h3>The first network mapper fully designed in Scala</h3>
 
-![img_5.png](img_5.png)
+<img src="screenshot.png" alt="screenshot.png"/>
 
 <h2>COMPONENTS</h2>
 <h3>Main:</h3>
