@@ -3,17 +3,27 @@
 
 <img src="screenshot.png" alt="screenshot.png"/>
 
+<h2>USAGE</h2>
+<p>Open sbt console and type:
+<br><strong>run IP_Address</strong>
+<br>or
+<br><strong>run net_ID/CIDR</strong>
+<br>
+Options:<strong>
+    <br>-H to show usage (this option won't start the scan)
+    <br>-O to show open ports
+    <br>-F to save scan results on file
+    <br>-S to show services running on open ports
+    <br>-V to turn on the verbose mode
+    <br>---------Default options are all false---------</strong>
+</p>
+
 <h2>COMPONENTS</h2>
 <h3>Main:</h3>
 <p>It takes two or more arguments. 
 <br>The first one should be a specific IP address or something like NetID/CIDR,
 to tell the scanner "Hey, I wanna discover which hosts are active in this subnet".
-<br>The second one (and possibly the others) should be an option, such as: 
-<br><strong>-H</strong> : to show the help message
-<br><strong>-O</strong> : to show open ports of active hosts
-<br><strong>-S</strong> : to show active services on open ports
-<br><strong>-F</strong> : to save the scan results on file
-<br><strong>-V</strong> : to turn on the verbose mode
+<br>The second one (and possibly the others) should be an option.
 <br>Through a <strong>Regex</strong>, this script automatically recognizes the format of the first argument.
 <br>If it's a <strong>single IP address</strong>, it calls the <strong>Host Scanner</strong> to ping that host and check if it's active or not.
 <br>If it's a <strong>combination of a NetID and a CIDR</strong>, it calls the <strong>Host Scanner</strong> again 

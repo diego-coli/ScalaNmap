@@ -4,8 +4,8 @@ case class Config(
                    defaultPortsToScan: Seq[Int] = 1 to 65535,
                    showHelp: Boolean = false,
                    showOpenPorts: Boolean = true,
-                   saveOnFile: Boolean = false,
                    showServices: Boolean = false,
+                   saveOnFile: Boolean = false,
                    verboseMode: Boolean = false
                  )
 
