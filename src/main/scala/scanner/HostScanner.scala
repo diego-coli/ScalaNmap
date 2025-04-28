@@ -56,4 +56,6 @@ object HostScanner:
         result
     Future.sequence(futures)
 
-  private def extractActiveHosts(results: Seq[Result]): Seq[String] = results.collect { case up(ip) => ip }
+  private def extractActiveHosts(results: Seq[Result]): Seq[String] =
+    results.collect:
+      case up(ip) => ip
