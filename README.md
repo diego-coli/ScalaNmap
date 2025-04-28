@@ -15,7 +15,7 @@ Options:<strong>
     <br>-serv to show services running on open ports
     <br>-os to detect operating systems
     <br>-save to save scan results on file
-    <br>-vvv to turn on the verbose mode
+    <br>-v to turn on the verbose mode
     <br>---------Default options are all false---------</strong>
 </p>
 

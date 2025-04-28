@@ -1,7 +1,6 @@
 package utils
 
 case class Config(
-                   defaultPortsToScan: Seq[Int] = 1 to 65535,
                    showHelp: Boolean = false,
                    showOpenPorts: Boolean = true,
                    showServices: Boolean = false,
@@ -27,12 +26,12 @@ object Parser:
     val last = if (maskLength == 24) 254 else 255
     (netId, first, last)
 
-  def parseFlags(flags: Seq[String]): Config =
+  private def parseFlags(flags: Seq[String]): Config =
     Config(
       showHelp = flags.contains("-h"),
       showOpenPorts = flags.contains("-open"),
       showServices = flags.contains("-serv"),
       detectOS = flags.contains("-os"),
       saveOnFile = flags.contains("-save"),
-      verboseMode = flags.contains("-verbose")
+      verboseMode = flags.contains("-v")
     )
