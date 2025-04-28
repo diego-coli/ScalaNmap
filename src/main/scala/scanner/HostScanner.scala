@@ -3,7 +3,7 @@ import scanner.PortsScanner.*
 import utils.Logger.*
 import utils.Parser.*
 import utils.ResultsManager.*
-import utils.{Config, Parser}
+import utils.*
 import java.net.InetAddress
 import scala.concurrent.Future
 import scala.concurrent.ExecutionContext.Implicits.global
@@ -18,12 +18,13 @@ object HostScanner:
 
   def scanHost(ip: String, config: Config): Unit =
     pingHost(ip).map: result =>
-      printHosts(result, verbose = true)
+      printHosts(result, config)
       result match
         case up(ip) =>
           scanPorts(ip).map: openPorts =>
-              printPorts(ip, openPorts, config.showOpenPorts, config.showServices)
-              if (config.saveOnFile) saveResults(Seq(ip -> openPorts), config.showOpenPorts, config.showServices)
+              printPorts(ip, openPorts, config)
+              printOS(Seq(ip), config)
+              saveResults(Seq(ip -> openPorts), config)
         case _ => ()
 
   def scanRange(cidrInput: String, config: Config): Unit =
@@ -31,12 +32,11 @@ object HostScanner:
     info(s"Scanning subnet $netId.$firstIP-$lastIP...")
     pingRange(netId, firstIP, lastIP, config).flatMap: results =>
       val hostsUp = extractActiveHosts(results)
-      if (!config.verboseMode) printActiveHosts(hostsUp)
-      if (config.showOpenPorts || config.saveOnFile)
-        showPortsAndSave(hostsUp, config, results.size)
-      else
-        printActiveOutOfTotal(hostsUp.size, results.size)
-        Future.unit
+      printActiveHosts(hostsUp, config)
+      printOS(hostsUp, config)
+      showPortsAndSave(hostsUp, config, results.size)
+      printActiveOutOfTotal(hostsUp.size, results.size)
+      Future.unit
 
   private def pingHost(ip: String): Future[Result] =
     val timeout = 500
@@ -49,20 +49,19 @@ object HostScanner:
     val range = (first to last).map(i => s"$netId.$i")
     val futures = range.map: ip =>
       pingHost(ip).map: result =>
-        printHosts(result, config.verboseMode)
+        printHosts(result, config, true)
         result
     Future.sequence(futures)
 
   private def extractActiveHosts(results: Seq[Result]): Seq[String] =
-    results.collect { case up(ip) => ip }
+    results.collect:
+      case up(ip) => ip
 
-  private def showPortsAndSave(hostsUp: Seq[String], config: Config, totalHosts: Int) = {
-    val scannedPorts = hostsUp.map: ip =>
-      scanPorts(ip).map(openPorts =>
-        printPorts(ip, openPorts, config.showOpenPorts, config.showServices)
-        (ip, openPorts)
-      )
-    Future.sequence(scannedPorts).map: hostsAndPorts =>
-      if (config.saveOnFile) saveResults(hostsAndPorts, config.showOpenPorts, config.showServices)
-      printActiveOutOfTotal(hostsUp.size, totalHosts)
-  }
+  private def showPortsAndSave(hostsUp: Seq[String], config: Config, totalHosts: Int) =
+    if (config.showOpenPorts || config.saveOnFile)
+      val scannedPorts = hostsUp.map: ip =>
+        scanPorts(ip).map: openPorts =>
+          printPorts(ip, openPorts, config)
+          (ip, openPorts)
+      Future.sequence(scannedPorts).map: hostsAndPorts =>
+        saveResults(hostsAndPorts, config)

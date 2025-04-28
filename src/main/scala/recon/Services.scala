@@ -1,11 +1,14 @@
-package scanner
-import java.net.{InetSocketAddress, Socket}
+package recon
+
+import utils.Config
+
 import java.io.{BufferedReader, InputStreamReader, PrintWriter}
+import java.net.{InetSocketAddress, Socket}
 import scala.util.Try
 
-object ServiceRecon:
+object Services:
 
-  def recognize(ip: String, port: Int): String =
+  def recognizeService(ip: String, port: Int): String =
     val service = knownServices.getOrElse(port, "Unknown")
     grabBanner(ip, port).fold(service)(banner => s"$service ($banner)")
 

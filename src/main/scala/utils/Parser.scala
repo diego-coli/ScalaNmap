@@ -5,6 +5,7 @@ case class Config(
                    showHelp: Boolean = false,
                    showOpenPorts: Boolean = true,
                    showServices: Boolean = false,
+                   detectOS: Boolean = false,
                    saveOnFile: Boolean = false,
                    verboseMode: Boolean = false
                  )
@@ -28,9 +29,10 @@ object Parser:
 
   def parseFlags(flags: Seq[String]): Config =
     Config(
-      showHelp = flags.contains("-H"),
-      showOpenPorts = flags.contains("-O"),
-      saveOnFile = flags.contains("-F"),
-      showServices = flags.contains("-S"),
-      verboseMode = flags.contains("-V")
+      showHelp = flags.contains("-h"),
+      showOpenPorts = flags.contains("-open"),
+      showServices = flags.contains("-serv"),
+      detectOS = flags.contains("-os"),
+      saveOnFile = flags.contains("-save"),
+      verboseMode = flags.contains("-verbose")
     )

@@ -10,11 +10,12 @@
 <br><strong>run net_ID/CIDR</strong>
 <br>
 Options:<strong>
-    <br>-H to show usage (this option won't start the scan)
-    <br>-O to show open ports
-    <br>-F to save scan results on file
-    <br>-S to show services running on open ports
-    <br>-V to turn on the verbose mode
+    <br>-h to show usage (this option won't start the scan)
+    <br>-open to show open ports
+    <br>-serv to show services running on open ports
+    <br>-os to detect operating systems
+    <br>-save to save scan results on file
+    <br>-vvv to turn on the verbose mode
     <br>---------Default options are all false---------</strong>
 </p>
 
