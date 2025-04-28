@@ -27,10 +27,10 @@ object Logger:
     warn("Usage:\trun <IP address> [-HOSV]")
     warn("\trun <netID>/<CIDR> [-HOSV]")
     warn("Options:")
-    warn("-H \tshow usage (this option won't start the scan)" +
-      "\n-O \tshow open ports" +
-      "\n-S \tshow services on open ports" +
-      "\n-F \tsave scan results on file" +
-      "\n-V \tverbose mode")
+    warn("-h \tshow usage (this option won't start the scan)" +
+      "\n-open \tshow open ports" +
+      "\n-serv \tshow services on open ports" +
+      "\n-save \tsave scan results on file" +
+      "\n-vvv \tverbose mode")
     warn("\n---------Default options are all false---------")
     warn("-----------------------------------------------")
