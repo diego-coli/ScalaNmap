@@ -13,7 +13,7 @@ object Main:
   def main(args: Array[String]): Unit =
     welcomeMessage
 
-    if (args.isEmpty) 
+    if (args.isEmpty)
       warn("No argument provided")
       help
     else
