@@ -1,5 +1,4 @@
 package scanner
-
 import java.net.{InetSocketAddress, Socket}
 import java.io.{BufferedReader, InputStreamReader, PrintWriter}
 import scala.util.Try
@@ -22,7 +21,13 @@ object ServiceRecon:
       val banner = input.readLine()
       socket.close()
       banner
-    .toOption
+    .toOption.map(cleanBanner)
+
+  private def cleanBanner(banner: String): String =
+    banner.filter(c => c.isLetterOrDigit || c.isWhitespace || isPunctuation(c))
+
+  private def isPunctuation(c: Char): Boolean =
+    "!\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~".contains(c)
 
   private val knownServices = Map(
     21 -> "FTP",
