@@ -21,8 +21,8 @@ object Main:
       if (config.showHelp) help()
       else inputOpt match
           case Some(input) => input match
-                                case ipRegex(_*)   => scan(input, config, range = false)
-                                case cidrRegex(_*) => scan(input, config, range = true)
+                                case ipRegex(_*)   => singleScan(input, config)
+                                case cidrRegex(_*) => subnetScan(input, config)
                                 case _             => error(s"IP Address format not valid, retry.")
           case None        => error("No IP address or netID provided.")
                               help()

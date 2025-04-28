@@ -9,14 +9,14 @@
 <br>or
 <br><strong>run net_ID/CIDR</strong>
 <br>
-Options:<strong>
-    <br>-h to show usage (this option won't start the scan)
-    <br>-open to show open ports
-    <br>-serv to show services running on open ports
-    <br>-os to detect operating systems
-    <br>-save to save scan results on file
-    <br>-v to turn on the verbose mode
-    <br>---------Default options are all false---------</strong>
+Options:
+    <br><strong>-h</strong> to show usage (this option won't start the scan)
+    <br><strong>-open</strong> to show open ports
+    <br><strong>-serv</strong> to show services running on open ports
+    <br><strong>-os</strong> to detect operating systems
+    <br><strong>-save</strong> to save scan results on file
+    <br><strong>-v</strong> to turn on the verbose mode
+    <br>---------Default options are all false---------
 </p>
 
 <h2>COMPONENTS</h2>
