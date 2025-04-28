@@ -13,7 +13,9 @@ object Main:
   def main(args: Array[String]): Unit =
     welcomeMessage
 
-    if (args.isEmpty) warn("No argument provided")
+    if (args.isEmpty) 
+      warn("No argument provided")
+      help
     else
       val (inputOpt, config) = parseInputAndConfig(args)
       if (config.showHelp) help

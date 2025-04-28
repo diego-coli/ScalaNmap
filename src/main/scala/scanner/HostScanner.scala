@@ -4,9 +4,11 @@ import utils.Logger.*
 import utils.Parser.*
 import utils.ResultsManager.*
 import utils.*
+
 import java.net.InetAddress
 import scala.concurrent.Future
 import scala.concurrent.ExecutionContext.Implicits.global
+import scala.concurrent.Future.*
 
 sealed trait Result:
   def ip: String
@@ -51,7 +53,7 @@ object HostScanner:
       pingHost(ip).map: result =>
         printHosts(result, config, true)
         result
-    Future.sequence(futures)
+    sequence(futures)
 
   private def extractActiveHosts(results: Seq[Result]): Seq[String] =
     results.collect:
@@ -63,5 +65,5 @@ object HostScanner:
         scanPorts(ip).map: openPorts =>
           printPorts(ip, openPorts, config)
           (ip, openPorts)
-      Future.sequence(scannedPorts).map: hostsAndPorts =>
+      sequence(scannedPorts).map: hostsAndPorts =>
         saveResults(hostsAndPorts, config)

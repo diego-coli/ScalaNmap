@@ -1,1 +1,81 @@
-[0m[[0m[0mdebug[0m] [0m[0mJar uptodate: C:\Users\diego\OneDrive\Desktop\MagistraleUniBo\PROGRAM. SVILUPPO (Viroli)\Lab\ScalaNmap\target\scala-3.3.5\scalanmap_3-0.1.0-SNAPSHOT.jar[0m
+[0m[[0m[0mdebug[0m] [0m[0mPackaging C:\Users\diego\OneDrive\Desktop\MagistraleUniBo\PROGRAM. SVILUPPO (Viroli)\Lab\ScalaNmap\target\scala-3.3.5\scalanmap_3-0.1.0-SNAPSHOT.jar ...[0m
+[0m[[0m[0mdebug[0m] [0m[0mInput file mappings:[0m
+[0m[[0m[0mdebug[0m] [0m[0m	Main$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  C:\Users\diego\OneDrive\Desktop\MagistraleUniBo\PROGRAM. SVILUPPO (Viroli)\Lab\ScalaNmap\target\scala-3.3.5\classes\Main$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	Main.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  C:\Users\diego\OneDrive\Desktop\MagistraleUniBo\PROGRAM. SVILUPPO (Viroli)\Lab\ScalaNmap\target\scala-3.3.5\classes\Main.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	Main.tasty[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  C:\Users\diego\OneDrive\Desktop\MagistraleUniBo\PROGRAM. SVILUPPO (Viroli)\Lab\ScalaNmap\target\scala-3.3.5\classes\Main.tasty[0m
+[0m[[0m[0mdebug[0m] [0m[0m	recon[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  C:\Users\diego\OneDrive\Desktop\MagistraleUniBo\PROGRAM. SVILUPPO (Viroli)\Lab\ScalaNmap\target\scala-3.3.5\classes\recon[0m
+[0m[[0m[0mdebug[0m] [0m[0m	recon\OS$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  C:\Users\diego\OneDrive\Desktop\MagistraleUniBo\PROGRAM. SVILUPPO (Viroli)\Lab\ScalaNmap\target\scala-3.3.5\classes\recon\OS$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	recon\OS.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  C:\Users\diego\OneDrive\Desktop\MagistraleUniBo\PROGRAM. SVILUPPO (Viroli)\Lab\ScalaNmap\target\scala-3.3.5\classes\recon\OS.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	recon\OS.tasty[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  C:\Users\diego\OneDrive\Desktop\MagistraleUniBo\PROGRAM. SVILUPPO (Viroli)\Lab\ScalaNmap\target\scala-3.3.5\classes\recon\OS.tasty[0m
+[0m[[0m[0mdebug[0m] [0m[0m	recon\Services$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  C:\Users\diego\OneDrive\Desktop\MagistraleUniBo\PROGRAM. SVILUPPO (Viroli)\Lab\ScalaNmap\target\scala-3.3.5\classes\recon\Services$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	recon\Services.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  C:\Users\diego\OneDrive\Desktop\MagistraleUniBo\PROGRAM. SVILUPPO (Viroli)\Lab\ScalaNmap\target\scala-3.3.5\classes\recon\Services.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	recon\Services.tasty[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  C:\Users\diego\OneDrive\Desktop\MagistraleUniBo\PROGRAM. SVILUPPO (Viroli)\Lab\ScalaNmap\target\scala-3.3.5\classes\recon\Services.tasty[0m
+[0m[[0m[0mdebug[0m] [0m[0m	scanner[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  C:\Users\diego\OneDrive\Desktop\MagistraleUniBo\PROGRAM. SVILUPPO (Viroli)\Lab\ScalaNmap\target\scala-3.3.5\classes\scanner[0m
+[0m[[0m[0mdebug[0m] [0m[0m	scanner\down$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  C:\Users\diego\OneDrive\Desktop\MagistraleUniBo\PROGRAM. SVILUPPO (Viroli)\Lab\ScalaNmap\target\scala-3.3.5\classes\scanner\down$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	scanner\down.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  C:\Users\diego\OneDrive\Desktop\MagistraleUniBo\PROGRAM. SVILUPPO (Viroli)\Lab\ScalaNmap\target\scala-3.3.5\classes\scanner\down.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	scanner\down.tasty[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  C:\Users\diego\OneDrive\Desktop\MagistraleUniBo\PROGRAM. SVILUPPO (Viroli)\Lab\ScalaNmap\target\scala-3.3.5\classes\scanner\down.tasty[0m
+[0m[[0m[0mdebug[0m] [0m[0m	scanner\HostScanner$$anon$1.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  C:\Users\diego\OneDrive\Desktop\MagistraleUniBo\PROGRAM. SVILUPPO (Viroli)\Lab\ScalaNmap\target\scala-3.3.5\classes\scanner\HostScanner$$anon$1.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	scanner\HostScanner$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  C:\Users\diego\OneDrive\Desktop\MagistraleUniBo\PROGRAM. SVILUPPO (Viroli)\Lab\ScalaNmap\target\scala-3.3.5\classes\scanner\HostScanner$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	scanner\HostScanner.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  C:\Users\diego\OneDrive\Desktop\MagistraleUniBo\PROGRAM. SVILUPPO (Viroli)\Lab\ScalaNmap\target\scala-3.3.5\classes\scanner\HostScanner.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	scanner\HostScanner.tasty[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  C:\Users\diego\OneDrive\Desktop\MagistraleUniBo\PROGRAM. SVILUPPO (Viroli)\Lab\ScalaNmap\target\scala-3.3.5\classes\scanner\HostScanner.tasty[0m
+[0m[[0m[0mdebug[0m] [0m[0m	scanner\PortsScanner$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  C:\Users\diego\OneDrive\Desktop\MagistraleUniBo\PROGRAM. SVILUPPO (Viroli)\Lab\ScalaNmap\target\scala-3.3.5\classes\scanner\PortsScanner$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	scanner\PortsScanner.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  C:\Users\diego\OneDrive\Desktop\MagistraleUniBo\PROGRAM. SVILUPPO (Viroli)\Lab\ScalaNmap\target\scala-3.3.5\classes\scanner\PortsScanner.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	scanner\PortsScanner.tasty[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  C:\Users\diego\OneDrive\Desktop\MagistraleUniBo\PROGRAM. SVILUPPO (Viroli)\Lab\ScalaNmap\target\scala-3.3.5\classes\scanner\PortsScanner.tasty[0m
+[0m[[0m[0mdebug[0m] [0m[0m	scanner\Result.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  C:\Users\diego\OneDrive\Desktop\MagistraleUniBo\PROGRAM. SVILUPPO (Viroli)\Lab\ScalaNmap\target\scala-3.3.5\classes\scanner\Result.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	scanner\Result.tasty[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  C:\Users\diego\OneDrive\Desktop\MagistraleUniBo\PROGRAM. SVILUPPO (Viroli)\Lab\ScalaNmap\target\scala-3.3.5\classes\scanner\Result.tasty[0m
+[0m[[0m[0mdebug[0m] [0m[0m	scanner\up$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  C:\Users\diego\OneDrive\Desktop\MagistraleUniBo\PROGRAM. SVILUPPO (Viroli)\Lab\ScalaNmap\target\scala-3.3.5\classes\scanner\up$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	scanner\up.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  C:\Users\diego\OneDrive\Desktop\MagistraleUniBo\PROGRAM. SVILUPPO (Viroli)\Lab\ScalaNmap\target\scala-3.3.5\classes\scanner\up.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	scanner\up.tasty[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  C:\Users\diego\OneDrive\Desktop\MagistraleUniBo\PROGRAM. SVILUPPO (Viroli)\Lab\ScalaNmap\target\scala-3.3.5\classes\scanner\up.tasty[0m
+[0m[[0m[0mdebug[0m] [0m[0m	utils[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  C:\Users\diego\OneDrive\Desktop\MagistraleUniBo\PROGRAM. SVILUPPO (Viroli)\Lab\ScalaNmap\target\scala-3.3.5\classes\utils[0m
+[0m[[0m[0mdebug[0m] [0m[0m	utils\Config$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  C:\Users\diego\OneDrive\Desktop\MagistraleUniBo\PROGRAM. SVILUPPO (Viroli)\Lab\ScalaNmap\target\scala-3.3.5\classes\utils\Config$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	utils\Config.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  C:\Users\diego\OneDrive\Desktop\MagistraleUniBo\PROGRAM. SVILUPPO (Viroli)\Lab\ScalaNmap\target\scala-3.3.5\classes\utils\Config.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	utils\Config.tasty[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  C:\Users\diego\OneDrive\Desktop\MagistraleUniBo\PROGRAM. SVILUPPO (Viroli)\Lab\ScalaNmap\target\scala-3.3.5\classes\utils\Config.tasty[0m
+[0m[[0m[0mdebug[0m] [0m[0m	utils\Logger$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  C:\Users\diego\OneDrive\Desktop\MagistraleUniBo\PROGRAM. SVILUPPO (Viroli)\Lab\ScalaNmap\target\scala-3.3.5\classes\utils\Logger$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	utils\Logger.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  C:\Users\diego\OneDrive\Desktop\MagistraleUniBo\PROGRAM. SVILUPPO (Viroli)\Lab\ScalaNmap\target\scala-3.3.5\classes\utils\Logger.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	utils\Logger.tasty[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  C:\Users\diego\OneDrive\Desktop\MagistraleUniBo\PROGRAM. SVILUPPO (Viroli)\Lab\ScalaNmap\target\scala-3.3.5\classes\utils\Logger.tasty[0m
+[0m[[0m[0mdebug[0m] [0m[0m	utils\Parser$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  C:\Users\diego\OneDrive\Desktop\MagistraleUniBo\PROGRAM. SVILUPPO (Viroli)\Lab\ScalaNmap\target\scala-3.3.5\classes\utils\Parser$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	utils\Parser.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  C:\Users\diego\OneDrive\Desktop\MagistraleUniBo\PROGRAM. SVILUPPO (Viroli)\Lab\ScalaNmap\target\scala-3.3.5\classes\utils\Parser.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	utils\Parser.tasty[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  C:\Users\diego\OneDrive\Desktop\MagistraleUniBo\PROGRAM. SVILUPPO (Viroli)\Lab\ScalaNmap\target\scala-3.3.5\classes\utils\Parser.tasty[0m
+[0m[[0m[0mdebug[0m] [0m[0m	utils\ResultsManager$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  C:\Users\diego\OneDrive\Desktop\MagistraleUniBo\PROGRAM. SVILUPPO (Viroli)\Lab\ScalaNmap\target\scala-3.3.5\classes\utils\ResultsManager$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	utils\ResultsManager.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  C:\Users\diego\OneDrive\Desktop\MagistraleUniBo\PROGRAM. SVILUPPO (Viroli)\Lab\ScalaNmap\target\scala-3.3.5\classes\utils\ResultsManager.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	utils\ResultsManager.tasty[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  C:\Users\diego\OneDrive\Desktop\MagistraleUniBo\PROGRAM. SVILUPPO (Viroli)\Lab\ScalaNmap\target\scala-3.3.5\classes\utils\ResultsManager.tasty[0m
+[0m[[0m[0mdebug[0m] [0m[0mDone packaging.[0m
