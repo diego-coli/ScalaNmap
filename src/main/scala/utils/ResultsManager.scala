@@ -29,7 +29,7 @@ object ResultsManager:
     else
       error("\nNo active hosts found.")
 
-  def printHostStatus(host: Result, config: Config, range: Boolean = false): Unit =
+  def printHostStatus(host: Status, config: Config, range: Boolean = false): Unit =
     if (config.verboseMode || !range)   // !range because if it's a single host it should print UP or DOWN anyway
       host match
         case up(ip)   => success(s"Host UP: $ip")

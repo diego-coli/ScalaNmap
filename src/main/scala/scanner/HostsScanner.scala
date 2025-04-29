@@ -9,11 +9,11 @@ import scala.concurrent.Future
 import scala.concurrent.ExecutionContext.Implicits.global
 import scala.concurrent.Future.*
 
-sealed trait Result:
+sealed trait Status:
   def ip: String
 
-case class up(ip: String) extends Result
-case class down(ip: String) extends Result
+case class up(ip: String) extends Status
+case class down(ip: String) extends Status
 
 object HostsScanner:
 
@@ -40,13 +40,13 @@ object HostsScanner:
       resultsManagement(hostsUp, config, totalHosts.size)
       Future.unit
 
-  private def ping(ip: String): Future[Result] =
+  private def ping(ip: String): Future[Status] =
     val timeout = 500
     val address = InetAddress.getByName(ip)
     Future:
       if (address.isReachable(timeout)) up(ip)
       else down(ip)
 
-  private def extractActiveHosts(hosts: Seq[Result]): Seq[String] =
+  private def extractActiveHosts(hosts: Seq[Status]): Seq[String] =
     hosts.collect:
       case up(ip) => ip
