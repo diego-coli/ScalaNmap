@@ -9,9 +9,9 @@ object OS:
     getTTL(ip) match
       case Some(ttl) =>
         ttl match
-          case 64 => info(s"Host: $ip | OS detected: Linux / MacOS")
-          case 128 => info(s"Host: $ip | OS detected: Windows")
-          case 255 => info(s"Host: $ip | OS detected: Cisco Router / Network device")
+          case 64 => success(s"Host: $ip | OS detected: Linux / MacOS")
+          case 128 => success(s"Host: $ip | OS detected: Windows")
+          case 255 => success(s"Host: $ip | OS detected: Cisco Router / Network device")
           case _ => warn(s"Host: $ip | Unknown OS (TTL: " + ttl + ")")
       case None => error(s"Host: $ip | Unable to determine OS")
 
@@ -21,6 +21,6 @@ object OS:
       else s"ping -c 1 $ip"
     val result = Try(command.!!).toOption
     result.flatMap: output =>
-      val ttlPattern = """ttl=(\d+)""".r
+      val ttlPattern = """(?i)ttl[=\s](\d+)""".r
       ttlPattern.findFirstMatchIn(output).map: m =>
         m.group(1).toInt

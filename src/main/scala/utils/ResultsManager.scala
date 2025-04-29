@@ -13,13 +13,12 @@ import scala.concurrent.Future.sequence
 object ResultsManager:
 
   def resultsManagement(hostsUp: Seq[String], config: Config, totalHosts: Int): Unit =
-    if (config.showOpenPorts || config.detectOS || config.saveOnFile)
-      val scannedPorts = hostsUp.map: ip =>
-        scanPorts(ip).map: openPorts =>
-          printPorts(ip, openPorts, config)
-          printOS(Seq(ip), config)
-          (ip, openPorts)
-      sequence(scannedPorts).map: hostsAndPorts =>
+    val scannedPorts = hostsUp.map: ip =>
+      scanPorts(ip).map: openPorts =>
+        printPorts(ip, openPorts, config)
+        printOS(Seq(ip), config)
+        (ip, openPorts)
+    sequence(scannedPorts).map: hostsAndPorts =>
         save(hostsAndPorts, config)
     printActiveOutOfTotal(hostsUp.size, totalHosts)
 
@@ -45,12 +44,12 @@ object ResultsManager:
       if (openPorts.isEmpty) warn(s"No open ports found on $ip.")
       else
         success(s"Open ports on $ip:")
-        openPorts.foreach{
-          port =>
-            val service: String = printService(ip, port, config)
-            success(s"$port\t$service")
-        }
-    else if (!config.showOpenPorts && openPorts.nonEmpty) info("Open ports found! Re-run with -P to see them.")
+        openPorts.foreach: port =>
+          val service: String = printService(ip, port, config)
+          success(s"$port\t$service")
+        if (!config.showServices) info("Wanna see which services are running? Re-run with -serv to see them.")
+
+    else if (!config.showOpenPorts && openPorts.nonEmpty) info("Open ports found! Re-run with -open to see them.")
 
   private def printActiveOutOfTotal(active: Int, total: Int): Unit =
     val msg = s"\nFinished: $active active hosts out of $total."
