@@ -20,7 +20,7 @@ object ResultsManager:
     val activeHosts = results.filter(_.status.isInstanceOf[up])
     if (totalHosts > 1) printActiveHosts(activeHosts.map(_.ip))
     activeHosts.foreach: host =>
-      handleMACAddress(config, host)
+      handleMACResults(config, host)
       handlePortsResults(config, host)
       handleOSResults(config, host)
       handleSave(config, activeHosts)
@@ -29,7 +29,7 @@ object ResultsManager:
     // recap
     printActiveOutOfTotal(activeHosts.size, totalHosts)
 
-  private def handleMACAddress(config: Config, host: Result): Unit =
+  private def handleMACResults(config: Config, host: Result): Unit =
     val ip = host.ip
     host.mac match
       case Some(mac) => success(s"MAC address of ${host.ip}: $mac")
