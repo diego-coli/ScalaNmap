@@ -1,16 +1,13 @@
 package recon
-
-import utils.Config
-
 import java.io.{BufferedReader, InputStreamReader, PrintWriter}
 import java.net.{InetSocketAddress, Socket}
 import scala.util.Try
 
 object Services:
 
-  def recognizeService(ip: String, port: Int): String =
+  def recognizeService(ip: String, port: Int): Option[String] =
     val service = knownServices.getOrElse(port, "Unknown")
-    grabBanner(ip, port).fold(service)(banner => s"$service ($banner)")
+    Some(grabBanner(ip, port).fold(service)(banner => s"$service ($banner)"))
 
   private def grabBanner(ip: String, port: Int): Option[String] =
     Try:
@@ -59,4 +56,4 @@ object Services:
     110 -> "USER test\r\n",
     143 -> "a001 LOGIN test test\r\n",
     8080 -> "HEAD / HTTP/1.0\r\n\r\n"
-  )
+  )  

@@ -1,6 +1,6 @@
 package utils
 
-object Logger:
+object MsgLogger:
 
   private def log(msg: String, colorCode: String): Unit = println(s"$colorCode$msg${Console.RESET}")
   def info(msg: String): Unit = log(msg, Console.BLUE)
@@ -9,8 +9,8 @@ object Logger:
   def warn(msg: String): Unit = log(msg, Console.YELLOW)
   def error(msg: String): Unit = log(msg, Console.RED)
   def welcomeMessage(): Unit =
-    info("\n--------------------------------------------------------------------")
-    info("This is ScalaNmap, a network mapper fully designed in Scala and Java. " +
+    info("\n\n\n--------------------------------------------------------------------")
+    info("This is ScalaNmap, a network mapper fully designed in Scala. " +
       "\nType -h for help. Enjoy! " +
       "\nDiego Coli', 2025")
     info("--------------------------------------------------------------------")

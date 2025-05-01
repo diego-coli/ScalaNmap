@@ -1,8 +1,6 @@
-import utils.*
-import scanner.*
-import scanner.HostsScanner.*
-import utils.Logger.*
 import utils.Parser.*
+import scanner.HostScanner.*
+import utils.MsgLogger.*
 import scala.util.matching.Regex
 
 object Main:
@@ -20,9 +18,9 @@ object Main:
       val (inputOpt, config) = parseInputAndConfig(args)
       if (config.showHelp) help()
       else inputOpt match
-          case Some(input) => input match
-                                case ipRegex(_*)   => singleScan(input, config)
-                                case cidrRegex(_*) => subnetScan(input, config)
-                                case _             => error(s"IP Address format not valid, retry.")
-          case None        => error("No IP address or netID provided.")
-                              help()
+        case Some(input) => input match
+          case ipRegex(_*)   => scan(input, config, isSubnet = false)
+          case cidrRegex(_*) => scan(input, config, isSubnet = true)
+          case _             => error(s"IP Address format not valid, retry.")
+        case None        => error("No IP address or netID provided.")
+          help()

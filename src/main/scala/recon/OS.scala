@@ -1,19 +1,17 @@
 package recon
 import scala.sys.process.*
 import scala.util.Try
-import utils.Logger.*
 
 object OS:
 
-  def detectOS(ip: String): Unit =
+  def detectOS(ip: String): Option[String] =
     getTTL(ip) match
-      case Some(ttl) =>
-        ttl match
-          case 64 => success(s"Host: $ip | OS detected: Linux / MacOS")
-          case 128 => success(s"Host: $ip | OS detected: Windows")
-          case 255 => success(s"Host: $ip | OS detected: Cisco Router / Network device")
-          case _ => warn(s"Host: $ip | Unknown OS (TTL: " + ttl + ")")
-      case None => error(s"Host: $ip | Unable to determine OS")
+      case Some(ttl) => ttl match
+        case 64  => Some("Linux / MacOS")
+        case 128 => Some("Windows")
+        case 255 => Some("Cisco Router / Network device")
+        case _   => Some(s"Unknown (TTL: $ttl)")
+      case None => None
 
   private def getTTL(ip: String): Option[Int] =
     val command =

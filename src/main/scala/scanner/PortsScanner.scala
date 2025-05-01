@@ -1,8 +1,8 @@
 package scanner
 import java.net.{InetSocketAddress, Socket}
-import scala.concurrent.ExecutionContext.Implicits.global
-import scala.concurrent.{ExecutionContext, Future}
+import scala.concurrent.Future
 import scala.util.Try
+import scala.concurrent.ExecutionContext.Implicits.global
 
 object PortsScanner:
 

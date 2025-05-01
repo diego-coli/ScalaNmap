@@ -1,83 +1,48 @@
 package utils
-import recon.Services.*
-import java.nio.file.*
 import scanner.*
-import utils.Logger.*
+import utils.HostInfoLogger.*
+import utils.MsgLogger.*
 import java.nio.file.Files.*
-import Paths.*
-import recon.OS.*
-import scanner.PortsScanner.*
-import scala.concurrent.ExecutionContext.Implicits.global
-import scala.concurrent.Future.sequence
+import java.nio.file.Paths.*
 
 object ResultsManager:
 
-  def resultsManagement(hostsUp: Seq[String], config: Config, totalHosts: Int): Unit =
-    val scannedPorts = hostsUp.map: ip =>
-      scanPorts(ip).map: openPorts =>
-        printPorts(ip, openPorts, config)
-        printOS(Seq(ip), config)
-        (ip, openPorts)
-    sequence(scannedPorts).map: hostsAndPorts =>
-        save(hostsAndPorts, config)
-    printActiveOutOfTotal(hostsUp.size, totalHosts)
+  def handleResults(results: Seq[Result], config: Config, totalHosts: Int): Unit =
+    // get and print active hosts
+    val activeHosts = results.filter(_.status.isInstanceOf[up])
+    if (totalHosts > 1) printActiveHosts(activeHosts.map(_.ip))
+    // for each active host, print info
+    activeHosts.foreach: host =>
+      val ip = host.ip
+      // open ports
+      host.ports match
+        case Some(ports) if ports.nonEmpty =>
+          printOpenPorts(ip, ports, config, host)
+        case _ =>
+          if (config.showOpenPorts) warn(s"No open ports found on $ip.")
+      // operating system
+      if (config.detectOS)
+        host.os match
+          case Some(name) => info(s"Host: $ip | OS detected: $name")
+          case None       => warn(s"Host: $ip | OS not detected")
+      // save on file
+      if (config.saveOnFile)
+        val formatted = save(activeHosts, config)
+        val path = get("results.txt")
+        write(path, formatted.getBytes)
+        info(s"\nResults saved in: ${path.toAbsolutePath}")
+    // recap
+    printActiveOutOfTotal(activeHosts.size, totalHosts)
 
-  def printActiveHosts(hostsUp: Seq[String]): Unit =
-    if (hostsUp.nonEmpty)
-      success("\nActive hosts:")
-      hostsUp.foreach(ip => success(s" - $ip"))
-    else
-      error("\nNo active hosts found.")
-
-  def printHostStatus(host: Status, config: Config, range: Boolean = false): Unit =
-    if (config.verboseMode || !range)   // !range because if it's a single host it should print UP or DOWN anyway
-      host match
-        case up(ip)   => success(s"Host UP: $ip")
-        case down(ip) => warn(s"Host DOWN: $ip")
-
-  def printOS(hostsUp: Seq[String], config: Config): Unit =
-    if (hostsUp.nonEmpty && config.detectOS)
-      hostsUp.foreach(ip => detectOS(ip))
-
-  private def printPorts(ip: String, openPorts: Seq[Int], config: Config): Unit =
-    if (config.showOpenPorts)
-      if (openPorts.isEmpty) warn(s"No open ports found on $ip.")
-      else
-        success(s"Open ports on $ip:")
-        openPorts.foreach: port =>
-          val service: String = printService(ip, port, config)
-          success(s"$port\t$service")
-        if (!config.showServices) info("Wanna see which services are running? Re-run with -serv to see them.")
-
-    else if (!config.showOpenPorts && openPorts.nonEmpty) info("Open ports found! Re-run with -open to see them.")
-
-  private def printActiveOutOfTotal(active: Int, total: Int): Unit =
-    val msg = s"\nFinished: $active active hosts out of $total."
-    if (active > 0) success(msg) else error(msg)
-
-  private def printService(ip: String, port: Int, config: Config): String =
-    if (config.showServices) recognizeService(ip, port)
-    else ""
-
-  private def save(results: Seq[(String, Seq[Int])], config: Config): Unit =
-    if (config.saveOnFile)
-      val res = results.map:
-        case (ip, ports) =>
-          if (config.showOpenPorts && ports.nonEmpty)
-            val portInfo = ports.map: port =>
-              val service = if (config.showServices) recognizeService(ip, port) else ""
-              if (service.nonEmpty) s"$port ($service)" else s"$port"
-            .mkString(", ")
-            s"Host: $ip\nOpen ports: $portInfo"
-          else
-            s"Host: $ip"
-
-      val outputPath = get("results.txt")
-      write(outputPath, res.mkString("\n").getBytes)
-      info(s"\nActive hosts${
-        if (config.showOpenPorts) ", open ports"
-        else ""
-      }${
-        if (config.showServices) " and services"
-        else ""
-      } saved in: ${outputPath.toAbsolutePath}")
+  private def save(results: Seq[Result], config: Config): String =
+    results.map: res =>
+      val portsStr = res.ports match
+        case Some(ports) if ports.nonEmpty =>
+          ports.map: port =>
+            val svc = res.services.getOrElse(port, None).getOrElse("")
+            if svc.nonEmpty then s"$port ($svc)" else s"$port"
+          .mkString(", ")
+        case _ => "No open ports"
+      val osStr = res.os.getOrElse("Unknown OS")
+      s"Host: ${res.ip}\nOpen ports: $portsStr\nOS: $osStr\n"
+    .mkString("\n")
