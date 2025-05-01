@@ -27,22 +27,29 @@ object ResultsManager:
           case None       => warn(s"Host: $ip | OS not detected")
       // save on file
       if (config.saveOnFile)
-        val formatted = save(activeHosts, config)
+        val formattedResults = save(activeHosts, config)
         val path = get("results.txt")
-        write(path, formatted.getBytes)
+        write(path, formattedResults.getBytes)
         info(s"\nResults saved in: ${path.toAbsolutePath}")
     // recap
     printActiveOutOfTotal(activeHosts.size, totalHosts)
 
   private def save(results: Seq[Result], config: Config): String =
-    results.map: res =>
-      val portsStr = res.ports match
-        case Some(ports) if ports.nonEmpty =>
-          ports.map: port =>
-            val svc = res.services.getOrElse(port, None).getOrElse("")
-            if svc.nonEmpty then s"$port ($svc)" else s"$port"
-          .mkString(", ")
-        case _ => "No open ports"
-      val osStr = res.os.getOrElse("Unknown OS")
-      s"Host: ${res.ip}\nOpen ports: $portsStr\nOS: $osStr\n"
-    .mkString("\n")
+    results.map(formatResult).mkString("\n")
+
+  private def formatResult(res: Result): String =
+    val portsStr = formatPorts(res.ports, res.services)
+    val osStr    = res.os.getOrElse("Something went wrong. OS or ttl not detected.")
+    /* high scalability, add here what you wanna save on file ...
+    ... */
+    s"Host: ${res.ip}\nOpen ports: $portsStr\nOS: $osStr\n"
+
+  private def formatPorts(portsOpt: Option[Seq[Int]], services: Map[Int, Option[String]]): String =
+    portsOpt match
+      case Some(ports) if ports.nonEmpty =>
+        ports.map { port =>
+          services.get(port).flatten match
+            case Some(service) => s"$port ($service)"
+            case None          => s"$port"
+        }.mkString(", ")
+      case _ => "No open ports"
