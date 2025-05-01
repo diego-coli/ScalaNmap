@@ -53,6 +53,8 @@ object HostScanner:
             services =
               if (config.showServices) openPorts.map(p => p -> recognizeService(ip, p)).toMap
               else Map.empty
+            /* high scalability, add here more info ...
+            ... */
           yield Result(ip = ip, ports = Some(openPorts), services = services, os = osName, status = hostStatus)
         case down(ip) =>
           Future.successful(Result(ip, None, Map.empty, None, hostStatus))

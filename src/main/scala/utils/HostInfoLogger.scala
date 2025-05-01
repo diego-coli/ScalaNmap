@@ -17,8 +17,9 @@ object HostInfoLogger:
     else
       error("\nNo active hosts found.")
   
-  def printOpenPorts(ip: String, openPorts: Seq[Int], config: Config, host: Result): Unit =
+  def printOpenPorts(host: Result, openPorts: Seq[Int], config: Config): Unit =
     if (config.showOpenPorts)
+      val ip = host.ip
       if (openPorts.isEmpty) warn(s"No open ports found on $ip.")
       else
         success(s"Open ports on $ip:")

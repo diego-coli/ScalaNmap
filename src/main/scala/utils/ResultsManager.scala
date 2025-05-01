@@ -8,31 +8,38 @@ import java.nio.file.Paths.*
 object ResultsManager:
 
   def handleResults(results: Seq[Result], config: Config, totalHosts: Int): Unit =
-    // get and print active hosts
     val activeHosts = results.filter(_.status.isInstanceOf[up])
     if (totalHosts > 1) printActiveHosts(activeHosts.map(_.ip))
-    // for each active host, print info
     activeHosts.foreach: host =>
-      val ip = host.ip
-      // open ports
-      host.ports match
-        case Some(ports) if ports.nonEmpty =>
-          printOpenPorts(ip, ports, config, host)
-        case _ =>
-          if (config.showOpenPorts) warn(s"No open ports found on $ip.")
-      // operating system
-      if (config.detectOS)
-        host.os match
-          case Some(name) => info(s"Host: $ip | OS detected: $name")
-          case None       => warn(s"Host: $ip | OS not detected")
-      // save on file
-      if (config.saveOnFile)
-        val formattedResults = save(activeHosts, config)
-        val path = get("results.txt")
-        write(path, formattedResults.getBytes)
-        info(s"\nResults saved in: ${path.toAbsolutePath}")
+      handlePortsResults(config, host)
+      handleOSResults(config, host)
+      handleSave(config, activeHosts)
+      /* high scalability, add here more functions ...
+      ... */
     // recap
     printActiveOutOfTotal(activeHosts.size, totalHosts)
+
+  private def handlePortsResults(config: Config, host: Result): Unit =
+    val ip = host.ip
+    host.ports match
+      case Some(ports) if ports.nonEmpty =>
+        printOpenPorts(host, ports, config)
+      case _ =>
+        if (config.showOpenPorts) warn(s"No open ports found on $ip.")
+
+  private def handleOSResults(config: Config, host: Result): Unit =
+    if (config.detectOS)
+      val ip = host.ip
+      host.os match
+        case Some(name) => info(s"Host: $ip | OS detected: $name")
+        case None => warn(s"Host: $ip | OS not detected")
+
+  private def handleSave(config: Config, activeHosts: Seq[Result]): Unit =
+    if (config.saveOnFile)
+      val formattedResults = save(activeHosts, config)
+      val path = get("results.txt")
+      write(path, formattedResults.getBytes)
+      info(s"\nResults saved in: ${path.toAbsolutePath}")
 
   private def save(results: Seq[Result], config: Config): String =
     results.map(formatResult).mkString("\n")
