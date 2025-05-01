@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/ScalaNmap.iml" filepath="$PROJECT_DIR$/.idea/modules/ScalaNmap.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/ScalaNmap.ScalaNmap-build.iml" filepath="$PROJECT_DIR$/.idea/modules/ScalaNmap.ScalaNmap-build.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/SCALAbleNmap.iml" filepath="$PROJECT_DIR$/.idea/modules/SCALAbleNmap.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/SCALAbleNmap.SCALAbleNmap-build.iml" filepath="$PROJECT_DIR$/.idea/modules/SCALAbleNmap.SCALAbleNmap-build.iml" />
     </modules>
   </component>
 </project>
