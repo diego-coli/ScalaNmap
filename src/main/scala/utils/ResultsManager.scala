@@ -5,12 +5,22 @@ import utils.MsgLogger.*
 import java.nio.file.Files.*
 import java.nio.file.Paths.*
 
+case class Result(
+                   ip: String,
+                   mac: Option[String] = None,
+                   ports: Option[Seq[Int]] = None,
+                   services: Map[Int, Option[String]] = Map.empty,
+                   os: Option[String] = None,
+                   status: Status
+                 )
+
 object ResultsManager:
 
   def handleResults(results: Seq[Result], config: Config, totalHosts: Int): Unit =
     val activeHosts = results.filter(_.status.isInstanceOf[up])
     if (totalHosts > 1) printActiveHosts(activeHosts.map(_.ip))
     activeHosts.foreach: host =>
+      handleMACAddress(config, host)
       handlePortsResults(config, host)
       handleOSResults(config, host)
       handleSave(config, activeHosts)
@@ -18,6 +28,12 @@ object ResultsManager:
       ... */
     // recap
     printActiveOutOfTotal(activeHosts.size, totalHosts)
+
+  private def handleMACAddress(config: Config, host: Result): Unit =
+    val ip = host.ip
+    host.mac match
+      case Some(mac) => success(s"MAC address of ${host.ip}: $mac")
+      case _ => warn(s"MAC address not found on $ip.")
 
   private def handlePortsResults(config: Config, host: Result): Unit =
     val ip = host.ip
@@ -42,16 +58,23 @@ object ResultsManager:
       info(s"\nResults saved in: ${path.toAbsolutePath}")
 
   private def save(results: Seq[Result], config: Config): String =
-    results.map(formatResult).mkString("\n")
+    results.map(res => formatResult(res, config)).mkString("\n")
 
-  private def formatResult(res: Result): String =
-    val portsStr = formatPorts(res.ports, res.services)
-    val osStr    = res.os.getOrElse("Something went wrong. OS or ttl not detected.")
+  private def formatResult(host: Result, config: Config): String =
+    val builder = new StringBuilder()
+    // save IP on file
+    builder.append(s"Host: ${host.ip}")
+    // save MAC on file
+    builder.append(s"\nMAC address: ${host.mac.getOrElse("Something went wrong.")}")
+    // save open ports on file (if requested)
+    if (config.showOpenPorts) builder.append(s"\nOpen ports: ${formatPorts(host.ports, host.services, config)}")
+    // save operating system on file (if requested)
+    if (config.detectOS) builder.append(s"\nOS: ${host.os.getOrElse("Something went wrong.")}")
     /* high scalability, add here what you wanna save on file ...
     ... */
-    s"Host: ${res.ip}\nOpen ports: $portsStr\nOS: $osStr\n"
+    builder.append("\n").toString()
 
-  private def formatPorts(portsOpt: Option[Seq[Int]], services: Map[Int, Option[String]]): String =
+  private def formatPorts(portsOpt: Option[Seq[Int]], services: Map[Int, Option[String]], config: Config): String =
     portsOpt match
       case Some(ports) if ports.nonEmpty =>
         ports.map { port =>

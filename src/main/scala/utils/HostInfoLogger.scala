@@ -16,7 +16,7 @@ object HostInfoLogger:
       hostsUp.foreach(ip => success(s" - $ip"))
     else
       error("\nNo active hosts found.")
-  
+
   def printOpenPorts(host: Result, openPorts: Seq[Int], config: Config): Unit =
     if (config.showOpenPorts)
       val ip = host.ip
