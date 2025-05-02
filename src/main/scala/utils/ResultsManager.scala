@@ -39,10 +39,9 @@ object ResultsManager:
       case _ => warn(s"MAC address not found on ${host.ip}.")
 
   private def handleHostnameResults(config: Config, host: Result): Unit =
-    val ip = host.ip
     host.hostName match
       case Some(hostName) => success(s"Hostname of ${host.ip}: $hostName")
-      case _ => warn(s"Hostname not found on $ip.")
+      case _ => warn(s"Hostname not found on ${host.ip}.")
 
   private def handlePortsResults(config: Config, host: Result): Unit =
     host.ports match
