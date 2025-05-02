@@ -1,22 +1,57 @@
-<h1>SCALAble Nmap</h1>
-<h3>The first network mapper fully designed in Scala.</h3>
+# 🌐 SCALAble Nmap
+## 🧠 The first network mapper fully designed in Scala 🧠
 
 <img src="screenshot.png" alt="screenshot.png"/>
 
-<h2>USAGE</h2>
-<p>Open sbt console and type:
-<br><strong>run IP_Address</strong> or <strong>run net_ID/CIDR</strong>
-<br>
-Options:
-    <br><strong>-h</strong> to show usage (this option won't start the scan)
-    <br><strong>-open</strong> to show open ports
-    <br><strong>-serv</strong> to show services running on open ports
-    <br><strong>-os</strong> to detect operating systems
-    <br><strong>-save</strong> to save scan results on file
-    <br><strong>-v</strong> to turn on the verbose mode
-    <br>---------Default options are all false---------
-</p>
+# 📖 USAGE
+- Open `sbt shell` or run it on Terminal with `run sbt` (suggested)
+- Type:
+  - `run <IP Address>` or `run <netID>/<CIDR>`
+- Options:
+  - `-h` to show usage hints (this option won't start the scan)
+    - 💡 typing `run` without any IP or option, the usage hints will be shown 
+  - `-open` to show open ports
+  - `-serv` to show services running on open ports
+  - `-os` to detect operating systems  
+  - `-save` to save scan results on file
+  - `-v` to turn on the verbose mode
+  #### ---------Default options are all false---------
 
-<h3>High scalability</h3>
-<p>It's possible to add functionalities easily, exploiting the functional nature of Scala.
-<br>Check the ResultsManager source code to know how to implement your changes.</p>
+## ✅ Current features
+- `Host status (UP or DOWN)` 
+- `MAC address`
+- `Hostname (reverse DNS lookup)`
+- `Operating System`
+- `TCP ports scan`
+- `Running services on open ports`
+- `Save results on .txt file`
+
+###  🚧 Coming soon features...
+- `More accurate service+version detection`
+- `Vulnerable services`
+- `Automatic anonymous FTP login`
+- `UDP ports scan`
+- `Save results on JSON file`
+
+## 🔧 High scalability - how to add features
+It's possible to add features easily, exploiting the functional nature of Scala.<br>
+You have to open and modify these files:
+
+### 📋 ResultsManager
+- `case class Result(...)`
+    - add your new feature
+- `handleResults()`
+    - add `handleXResults(config, host)`
+- Create your new `handleXResults(config: Config, host: Result)` method
+- `formatResults(...)`
+    - add `builder.append(<your result>)`
+
+### 🖥️ HostScanner
+- `getScanResults(...)`
+    - in `for...yield` cycle:
+        - add `newResult <- <new method>` if it's a `Future`
+        - or `newResult = <new method>` if it's an `Option`
+    - update `Result(...)`
+
+### 🛠️ Appropriate object
+- Implement your new method
