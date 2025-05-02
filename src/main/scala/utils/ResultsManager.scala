@@ -34,10 +34,9 @@ object ResultsManager:
     printActiveOutOfTotal(activeHosts.size, totalHosts)
 
   private def handleMACResults(config: Config, host: Result): Unit =
-    val ip = host.ip
     host.mac match
       case Some(mac) => success(s"MAC address of ${host.ip}: $mac")
-      case _ => warn(s"MAC address not found on $ip.")
+      case _ => warn(s"MAC address not found on ${host.ip}.")
 
   private def handleHostnameResults(config: Config, host: Result): Unit =
     val ip = host.ip
@@ -46,19 +45,17 @@ object ResultsManager:
       case _ => warn(s"Hostname not found on $ip.")
 
   private def handlePortsResults(config: Config, host: Result): Unit =
-    val ip = host.ip
     host.ports match
       case Some(ports) if ports.nonEmpty =>
         printOpenPorts(host, ports, config)
       case _ =>
-        if (config.showOpenPorts) warn(s"No open ports found on $ip.")
+        if (config.showOpenPorts) warn(s"No open ports found on ${host.ip}.")
 
   private def handleOSResults(config: Config, host: Result): Unit =
     if (config.detectOS)
-      val ip = host.ip
       host.os match
-        case Some(name) => info(s"Host: $ip | OS detected: $name")
-        case None => warn(s"Host: $ip | OS not detected")
+        case Some(name) => info(s"Host: ${host.ip} | OS detected: $name")
+        case None => warn(s"Host: ${host.ip} | OS not detected")
 
   private def handleSave(config: Config, activeHosts: Seq[Result]): Unit =
     if (config.saveOnFile)
