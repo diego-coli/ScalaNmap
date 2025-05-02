@@ -23,3 +23,12 @@ object Address:
         val regex = s"""\\s*$ip\\s+([\\da-fA-F-]{17})\\s+""".r
         regex.findFirstMatchIn(output).map(_.group(1))
       .getOrElse(None)
+
+  def getHostname(ip: String): Option[String] =
+    try
+      val address = InetAddress.getByName(ip)
+      val host = address.getCanonicalHostName
+      if (host != ip)
+        Some(host) 
+      else None
+    catch case _: Exception => None

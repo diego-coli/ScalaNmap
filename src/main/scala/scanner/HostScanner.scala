@@ -1,5 +1,6 @@
 package scanner
-import recon.Address.{getMac, ping}
+import recon.Address
+import recon.Address.{getMac, ping, getHostname}
 import scanner.PortsScanner.*
 import utils.*
 import utils.Parser.parseCIDR
@@ -8,6 +9,7 @@ import recon.Services.*
 import utils.HostInfoLogger.*
 import utils.MsgLogger.*
 import utils.ResultsManager.*
+
 import scala.concurrent.ExecutionContext.Implicits.global
 import scala.concurrent.Future
 import scala.concurrent.Future.sequence
@@ -40,14 +42,15 @@ object HostScanner:
         case up(ip) =>
           for
             mac <- getMac(ip)
+            hostName = getHostname(ip)
             openPorts <- scanPorts(ip)
             osName = detectOS(ip)
             services = if (config.showServices) openPorts.map(p => p -> recognizeService(ip, p)).toMap
                        else Map.empty
             /* high scalability, add here more info ...
             ... */
-          yield Result(ip = ip, mac = mac, ports = Some(openPorts), services = services, os = osName, status = hostStatus)
+          yield Result(ip = ip, mac = mac, ports = Some(openPorts), services = services, os = osName, hostName = hostName, status = hostStatus)
         case down(ip) =>
-          Future.successful(Result(ip, None, None, Map.empty, None, hostStatus))
+          Future.successful(Result(ip, None, None, Map.empty, None, None, hostStatus))
     yield result
 

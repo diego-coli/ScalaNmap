@@ -11,7 +11,10 @@ case class Result(
                    ports: Option[Seq[Int]] = None,
                    services: Map[Int, Option[String]] = Map.empty,
                    os: Option[String] = None,
+                   hostName: Option[String] = None,
                    status: Status
+                   /*high scalability, add here more features ...
+                   ... */
                  )
 
 object ResultsManager:
@@ -21,6 +24,7 @@ object ResultsManager:
     if (totalHosts > 1) printActiveHosts(activeHosts.map(_.ip))
     activeHosts.foreach: host =>
       handleMACResults(config, host)
+      handleHostnameResults(config, host)
       handlePortsResults(config, host)
       handleOSResults(config, host)
       handleSave(config, activeHosts)
@@ -34,6 +38,12 @@ object ResultsManager:
     host.mac match
       case Some(mac) => success(s"MAC address of ${host.ip}: $mac")
       case _ => warn(s"MAC address not found on $ip.")
+
+  private def handleHostnameResults(config: Config, host: Result): Unit =
+    val ip = host.ip
+    host.hostName match
+      case Some(hostName) => success(s"Hostname of ${host.ip}: $hostName")
+      case _ => warn(s"Hostname not found on $ip.")
 
   private def handlePortsResults(config: Config, host: Result): Unit =
     val ip = host.ip
@@ -58,12 +68,14 @@ object ResultsManager:
       info(s"\nResults saved in: ${path.toAbsolutePath}")
 
   private def save(results: Seq[Result], config: Config): String =
-    results.map(res => formatResult(res, config)).mkString("\n")
+    results.map(res => formatResults(res, config)).mkString("\n")
 
-  private def formatResult(host: Result, config: Config): String =
+  private def formatResults(host: Result, config: Config): String =
     val builder = new StringBuilder()
     // save IP on file
     builder.append(s"Host: ${host.ip}")
+    // save hostname on file
+    builder.append(s"\nHostname: ${host.hostName.getOrElse("Something went wrong.")}")
     // save MAC on file
     builder.append(s"\nMAC address: ${host.mac.getOrElse("Something went wrong.")}")
     // save open ports on file (if requested)
