@@ -1,4 +1,5 @@
 package utils
+import recon.Address.*
 
 case class Config(
                    showHelp: Boolean = false,
@@ -9,6 +10,15 @@ case class Config(
                    verboseMode: Boolean = false
                  )
 
+case class Subnet(
+                   network: String,
+                   subnetMask: String,
+                   broadcast: String,
+                   firstIp: String,
+                   lastIp: String,
+                   cidr: String
+                 )
+
 object Parser:
 
   def parseInputAndConfig(args: Array[String]): (Option[String], Config) =
@@ -17,14 +27,9 @@ object Parser:
     val config = Parser.parseFlags(flags)
     (inputOpt, config)
 
-  def parseCIDR(cidr: String): (String, Int, Int) =
-    val Array(network, mask) = cidr.split("/")
-    val maskLength = mask.toInt
-    val netParts = network.split("\\.").map(_.toInt)
-    val netId = netParts.take(3).mkString(".")
-    val first = 1
-    val last = if (maskLength == 24) 254 else 255
-    (netId, first, last)
+  def parseCIDR(cidr: String): Subnet =
+    val Array(ipStr, prefixLengthStr) = cidr.split("/")
+    getSubnet(cidr, ipStr, prefixLengthStr)
 
   private def parseFlags(flags: Seq[String]): Config =
     Config(

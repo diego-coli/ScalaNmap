@@ -1,9 +1,9 @@
 package scanner
 import recon.Address
-import recon.Address.{getMac, ping, getHostname}
+import recon.Address.*
 import scanner.PortsScanner.*
 import utils.*
-import utils.Parser.parseCIDR
+import utils.Parser.*
 import recon.OS.*
 import recon.Services.*
 import utils.HostInfoLogger.*
@@ -24,9 +24,11 @@ object HostScanner:
 
   def scan(input: String, config: Config, isSubnet: Boolean): Future[Unit] =
     if (isSubnet)
-      val (netId, firstIP, lastIP) = parseCIDR(input)
-      info(s"Scanning subnet $netId.$firstIP-$lastIP...")
-      val range = (firstIP to lastIP).map(i => s"$netId.$i")
+      val subnet = parseCIDR(input)
+      info(s"Scanning subnet ${subnet.firstIp} to ${subnet.lastIp}...")
+      val firstIp = ipToInt(subnet.firstIp)
+      val lastIp = ipToInt(subnet.lastIp)
+      val range = (firstIp to lastIp).map(intToIp)
       val scans = range.map(ip => getScanResults(ip, config))
       sequence(scans).map: results =>
         handleResults(results, config, totalHosts = range.size)
