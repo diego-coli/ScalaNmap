@@ -18,6 +18,7 @@
   #### ---------Default options are all false---------
 
 ## ✅ Current features
+- `Single host or subnet scan`
 - `Host status (UP or DOWN)` 
 - `MAC address`
 - `Hostname (reverse DNS lookup)`
