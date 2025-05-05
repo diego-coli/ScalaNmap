@@ -29,17 +29,17 @@ object HostScanner:
       val firstIp = ipToInt(subnet.firstIp)
       val lastIp = ipToInt(subnet.lastIp)
       val range = (firstIp to lastIp).map(intToIp)
-      val scans = range.map(ip => getScanResults(ip, config))
+      val scans = range.map(ip => getScanResults(ip, config, range = true))
       sequence(scans).map: results =>
         handleResults(results, config, totalHosts = range.size)
     else
-      getScanResults(input, config).map: result =>
+      getScanResults(input, config, range = false).map: result =>
         handleResults(Seq(result), config, totalHosts = 1)
 
-  private def getScanResults(ip: String, config: Config): Future[Result] =
+  private def getScanResults(ip: String, config: Config, range: Boolean): Future[Result] =
     for
       hostStatus <- ping(ip)
-      _ = printHostStatus(hostStatus, config)
+      _ = printHostStatus(hostStatus, config, range)
       result <- hostStatus match
         case up(ip) =>
           for
